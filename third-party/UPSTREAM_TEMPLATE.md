@@ -1,16 +1,9 @@
 # Upstream information
 
-Project: <Skill name>
-
-Repository: <Repository URL>
-
-Version: <Git version tag URL>
-
-Commit: <Git commit URL>
-
-Imported: <Date the skill was imported>
-
-License: <Skill license, e.g. MIT>
+Repository: \<Repository URL\>\
+Commit: \<Git commit URL\>\
+Imported: \<Date the skill was imported\>\
+License: \<Skill license, e.g. MIT\>
 
 ## Local modifications
 
