@@ -12,3 +12,7 @@ Collection of personal AI Skills together with their dependencies under [third-p
 - [grilling](./third-party/grilling/UPSTREAM.md)
 - [ponytail](./third-party/ponytail/UPSTREAM.md)
 - [tdd](./third-party/tdd/UPSTREAM.md)
+
+# Installation
+
+- Move desired skills into your `.agents` or `.claude` skills directory. Third party skills are snapshots of personal skill dependencies that can be used as is.
