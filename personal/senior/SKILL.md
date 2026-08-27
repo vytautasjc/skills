@@ -5,7 +5,7 @@ description: Routes each phase of non-trivial work in this repo to the right ski
 
 # Senior
 
-The repo's workflow router. Match the work to its phase and run that phase's skills; each phase is a **gate**, not a suggestion — the phase is not done until its gate holds.
+Workflow router. Match the work to its phase and run that phase's skills; each phase is a **gate**, not a suggestion — the phase is not done until its gate holds.
 
 ## Prerequisites
 

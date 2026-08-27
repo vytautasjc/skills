@@ -1,6 +1,10 @@
 # Skills
 Collection of personal AI Skills together with their dependencies under [third-party](./third-party)
 
+- [plan-tasks](./personal/plan-tasks/SKILL.md)
+- [staged-plan-tasks](./personal/staged-plan-tasks/SKILL.md)
+- [senior](./personal/senior/SKILL.md)
+
 # Third-Party Skills
 
 - [domain-modeling](./third-party/domain-modeling/UPSTREAM.md)
