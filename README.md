@@ -5,6 +5,8 @@ Collection of personal agent skills together with their [third-party](#third-par
 
 Plan Tasks is a skill heavily inspired by [Codex Exec Plans](https://developers.openai.com/cookbook/articles/codex_exec_plans) to create local feature scoped plans split into smaller tasks. Works wonderfully together with [grilling](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) skill to keep you in the driving seat while planning.
 
+Plans can be completed one task at a time across multiple sessions because progress and status are saved between sessions.
+
 ### Installation
 
 ```sh
@@ -55,6 +57,8 @@ docs/plans
 ## [staged-plan-tasks](./personal/staged-plan-tasks/SKILL.md)
 
 Staged Plan Tasks is built on top of [plan-tasks](#plan-tasks) to tackle broader tasks, large features composed of multiple tasks.
+
+Work can be completed task by task across multiple sessions because progress and status are saved between sessions. Stages following the first are detailed just-in-time, after previous stage is delivered. Not detailing tasks for all stages at once helps to avoid change of scope, especially when new observations and details occur during previous stage implementation.
 
 ### Installation
 
