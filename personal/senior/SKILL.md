@@ -26,7 +26,7 @@ Before performing this workflow:
 
 ## Plan
 
-Route by milestone count: `plan-tasks` skill for a single milestone, `staged-plan-tasks` skill for two or more sequential, independently-shippable ones. Grill user using `grilling` skill when planning. Plans live under `docs/`, never the repo root.
+Route by milestone count: `plan-tasks` skill for a single milestone, `staged-plan-tasks` skill for two or more sequential, independently-shippable ones. Always grill user using `grilling` skill when planning, unless specifically instructed to work autonomously. Plans live under `docs/`, never the repo root.
 
 ## Keep domain language sharp
 

@@ -13,6 +13,9 @@ npx skills add vytautasjc/skills --skill plan-tasks
 
 ### Example
 
+<details>
+<summary>Input</summary>
+
 ```sh
 codex >  $plan-tasks Update AGENTS.md with security guidelines
 
@@ -30,13 +33,18 @@ The task map is ready in docs/plans/agents-security-guidelines/PLAN.md.
 
   Map gate: Please approve the single-task breakdown and ordering. After approval, I’ll detail task 01 and stop at its Plan gate.
 ```
+</details>
 
-**Outcome:**
+<details>
+<summary>Output</summary>
+
 ```sh
 docs/plans
 └── agents-security-guidelines
     └── PLAN.md
 ```
+
+</details>
 
 ## [staged-plan-tasks](./personal/staged-plan-tasks/SKILL.md)
 
@@ -49,6 +57,9 @@ npx skills add vytautasjc/skills --skill plan-tasks staged-plan-tasks
 ```
 
 ### Example
+
+<details>
+<summary>Input</summary>
 
 ```sh
 codex > $staged-plan-tasks Update AGENTS.md with security guidelines. Update existing backend api code according to these guidelines.
@@ -64,7 +75,6 @@ codex > $staged-plan-tasks Update AGENTS.md with security guidelines. Update exi
   The proposed delivery order is:
 
   1. secure-api-baseline — add shared and API-specific security guidelines, then enforce safe production configuration, trusted browser origins, security headers, and HTTP input limits.
-
   2. hardened-sessions-and-auth-endpoints — protect Dummy User login/session/logout against cross-site requests and automated abuse, harden cookies, and prevent reusable session credentials from being stored in PostgreSQL.
   
   Roadmap gate: Please approve the two-stage breakdown and order. Once approved, I’ll plan Stage 01 and stop at its Map gate before detailing tasks or changing source code.
@@ -97,8 +107,10 @@ codex > ok
 
 [...]
 ```
+</details>
 
-**Outcome:**
+<details>
+<summary>Output</summary>
 
 ```sh
 docs/plans/api-security-hardening
@@ -116,6 +128,7 @@ docs/plans/api-security-hardening
             ├── 01-harden-auth-endpoints.md
             └── 02-improve-session-handling.mdp
 ```
+</details>
 
 ## [senior](./personal/senior/SKILL.md)
 
@@ -141,6 +154,9 @@ npx skills add vytautasjc/skills --skill plan-tasks staged-plan-tasks senior
 
 ## Example
 
+<details>
+<summary>Input</summary>
+
 ```sh
 codex > $senior Let's implement a dummy API endpoint that returns 200 OK. Interview me    
 
@@ -157,6 +173,9 @@ codex > ok
 [...]
 
 ```
+</details>
+
+---
 
 # Third-Party Skills
 
