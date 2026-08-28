@@ -32,6 +32,10 @@ The task map is ready in docs/plans/agents-security-guidelines/PLAN.md.
   The existing uncommitted AGENTS.md change is explicitly preserved. No security-guideline edits have been made yet.
 
   Map gate: Please approve the single-task breakdown and ordering. After approval, I’ll detail task 01 and stop at its Plan gate.
+
+codex > ok
+
+[...]
 ```
 </details>
 
@@ -41,7 +45,9 @@ The task map is ready in docs/plans/agents-security-guidelines/PLAN.md.
 ```sh
 docs/plans
 └── agents-security-guidelines
-    └── PLAN.md
+    ├── PLAN.md
+    └── tasks
+        └── 01-secure-runtime-contract.md
 ```
 
 </details>
