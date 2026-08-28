@@ -47,7 +47,7 @@ docs/plans
 └── agents-security-guidelines
     ├── PLAN.md
     └── tasks
-        └── 01-secure-runtime-contract.md
+        └── 01-security-guidelines.md
 ```
 
 </details>
