@@ -1,6 +1,6 @@
 # Upstream information
 
-Repository: [grilling](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)\
+Repository: [mattpocock/skills/grilling](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling)\
 Commit: [85f83d3fde1d3a90d5c9a657f6998c79a6c37308](https://github.com/mattpocock/skills/commit/85f83d3fde1d3a90d5c9a657f6998c79a6c37308)\
 Imported: 2026-08-27\
 License: MIT
