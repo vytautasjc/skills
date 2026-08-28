@@ -43,7 +43,7 @@ Decompose first, then detail every task, and finally execute the tasks one at a 
    → **Plan gate.** Present the task plan. This is the moment to review or grill it. Wait for approval. Source is never modified before this gate passes. Once approved, move to detailing the next task on the list. Repeat until every task is detailed; only then begin execution.
 
 3. **Execute every task, one at a time.** Execute the next unchecked task: make the changes and keep the task's live sections current as you go.
-   → **Result gate.** Report which task completed, what changed, surprises, and **validation evidence** — the exact commands or tests run and their output, proving the task works (not merely that code compiles). Update the task's progress section, the parent plan's progress section, and any decisions or observations — promote cross-cutting ones to the parent plan and leave a one-line pointer in the task, never a full duplicate. Name the next task. Wait before detailing it.
+   → **Result gate.** Report which task completed, what changed, surprises, and **validation evidence** — the exact commands or tests run and their output, proving the task works (not merely that code compiles). Update the task's progress section, the parent plan's progress section, and any decisions or observations — promote cross-cutting ones to the parent plan and leave a one-line pointer in the task, never a full duplicate. Name the next task. Wait before executing it.
 
 Execute only the current task. Never cross a gate, expand scope, or detail the next task without an explicit instruction to continue. If scope or design changes materially mid-task, stop and revise the plan rather than pressing on.
 

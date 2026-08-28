@@ -70,24 +70,24 @@ npx skills add vytautasjc/skills --skill plan-tasks staged-plan-tasks
 ```sh
 codex > $staged-plan-tasks Update AGENTS.md with security guidelines. Update existing backend api code according to these guidelines.
 
-• I’m using staged-plan-tasks as requested, with the repository’s senior workflow governing this planning phase. I’ll inspect the backend and planning conventions, then create only the lean roadmap and stop at the required Roadmap gate—no stage implementation yet.
+• I’m using staged-plan-tasks as requested, with the repository’s senior workflow governing this planning phase. I’ll inspect the backend and discovery record, then create the effort specification and lean delivery roadmap before stopping at the required Roadmap/Spec gate—no stage implementation yet.
 
 [...]
 
 • I’ve scoped this as two milestones.
 
-• Created the docs/plans/api-security-hardening/ROADMAP.md.
+• Created docs/plans/api-security-hardening/SPEC.md and ROADMAP.md.
 
   The proposed delivery order is:
 
   1. secure-api-baseline — add shared and API-specific security guidelines, then enforce safe production configuration, trusted browser origins, security headers, and HTTP input limits.
   2. hardened-sessions-and-auth-endpoints — protect Dummy User login/session/logout against cross-site requests and automated abuse, harden cookies, and prevent reusable session credentials from being stored in PostgreSQL.
   
-  Roadmap gate: Please approve the two-stage breakdown and order. Once approved, I’ll plan Stage 01 and stop at its Map gate before detailing tasks or changing source code.
+  Roadmap/Spec gate: Please approve the agreed security outcome, its requirement-to-acceptance traceability, and the two-stage coverage map. Once approved, I’ll plan Stage 01 and stop at its Map gate before detailing tasks or changing source code.
 
 codex > ok
 
-• Roadmap approved. I’m now applying plan-tasks to Stage 01 only: I’ll map its vertical tasks, add the stage plan pointer to the roadmap, and stop at the Stage 01 Map gate before detailing any task or editing guidelines/source.
+• Roadmap and specification approved. I’m now applying plan-tasks to Stage 01 only: I’ll map the stage’s assigned SPEC IDs to vertical tasks, add the stage plan pointer to the roadmap, and stop at the Stage 01 Map gate before detailing any task or editing guidelines/source.
 
 [...]
 
@@ -120,6 +120,7 @@ codex > ok
 
 ```sh
 docs/plans/api-security-hardening
+├── SPEC.md
 ├── ROADMAP.md
 └── stages
     ├── 01-secure-api-baseline

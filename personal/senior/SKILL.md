@@ -32,11 +32,10 @@ Route by milestone count: `plan-tasks` skill for a single milestone, `staged-pla
 
 While planning, grilling, or designing, use `domain-modeling` skill to build and challenge the ubiquitous language. `domain-modeling` skill is plan-agnostic, so route resolved terms by where the feature lives:
 
-- No `CONTEXT.md` yet → hold terms in the plan's `Context and Orientation` section, not a premature `CONTEXT.md` for a feature that does not exist yet.
-- Staged effort → effort-wide terms in the `ROADMAP.md` context; stage-specific terms in that stage's `PLAN.md`.
-- A relevant parent `CONTEXT.md` exists → record only broad terms shared by the parent and its siblings there; keep feature terms in the plan.
-- Scaffolding begins → migrate the plan's terms into the feature's `CONTEXT.md` before writing any source.
-
+- Standalone effort with no `CONTEXT.md` yet → hold terms in the PLAN's `Context and Orientation` section, not a premature `CONTEXT.md` for a feature that does not exist yet.
+- Staged effort → agreed domain terms for the whole effort in the root `SPEC.md`; delivery-only terms in `ROADMAP.md`; implementation-only terms in the current stage's PLAN or task.
+- A relevant parent `CONTEXT.md` exists → record only broad terms shared by the parent and its siblings there; keep promised feature meaning in the governing PLAN or SPEC.
+- Scaffolding begins → describe how code realizes the PLAN or SPEC vocabulary in the feature's `CONTEXT.md` before writing source.
 ## Implement
 
 Not done until **both** gates hold:
