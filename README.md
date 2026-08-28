@@ -125,8 +125,18 @@ It can be used for planning, implementation, code review. And it is made to foll
 
 ### Installation
 
+With dependency snapshots:
 ```sh
 npx skills add vytautasjc/skills --skill plan-tasks staged-plan-tasks tdd ponytail grilling domain-modeling senior
+```
+
+With newest dependency versions:
+```sh
+npx skills add mattpocock/skills --skill tdd grilling domain-modeling
+
+npx skills add dietrichgebert/ponytail --skill ponytail
+
+npx skills add vytautasjc/skills --skill plan-tasks staged-plan-tasks senior
 ```
 
 ## Example
