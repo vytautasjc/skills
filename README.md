@@ -1,20 +1,20 @@
 # Skills
-Collection of personal AI Skills together with their dependencies under [third-party](./third-party)
+Collection of personal agent skills together with their [third-party](#-third-party-skills) dependencies.
 
-## [plan-tasks](./personal/plan-tasks/SKILL.md)
+## ✨ [plan-tasks](./personal/plan-tasks/SKILL.md)
 
 Plan Tasks is a skill heavily inspired by [Codex Exec Plans](https://developers.openai.com/cookbook/articles/codex_exec_plans) to create local feature scoped plans split into smaller tasks. Works wonderfully together with [grilling](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) skill to keep you in the driving seat while planning.
 
-### Installation
+### 🛠️ Installation
 
 ```sh
 npx skills add vytautasjc/skills --skill plan-tasks
 ```
 
-### Example
+### 🖥️ Example
 
 <details>
-<summary>Input</summary>
+<summary>💬 Input</summary>
 
 ```sh
 codex >  $plan-tasks Update AGENTS.md with security guidelines
@@ -36,7 +36,7 @@ The task map is ready in docs/plans/agents-security-guidelines/PLAN.md.
 </details>
 
 <details>
-<summary>Output</summary>
+<summary>📦 Output</summary>
 
 ```sh
 docs/plans
@@ -46,20 +46,20 @@ docs/plans
 
 </details>
 
-## [staged-plan-tasks](./personal/staged-plan-tasks/SKILL.md)
+## ✨ [staged-plan-tasks](./personal/staged-plan-tasks/SKILL.md)
 
-Staged Plan Tasks is built on top of [plan-tasks](#plan-tasks) to tackle broader tasks, large features composed of multiple tasks.
+Staged Plan Tasks is built on top of [plan-tasks](#-plan-tasks) to tackle broader tasks, large features composed of multiple tasks.
 
-### Installation
+### 🛠️ Installation
 
 ```sh
 npx skills add vytautasjc/skills --skill plan-tasks staged-plan-tasks
 ```
 
-### Example
+### 🖥️ Example
 
 <details>
-<summary>Input</summary>
+<summary>💬 Input</summary>
 
 ```sh
 codex > $staged-plan-tasks Update AGENTS.md with security guidelines. Update existing backend api code according to these guidelines.
@@ -110,7 +110,7 @@ codex > ok
 </details>
 
 <details>
-<summary>Output</summary>
+<summary>📦 Output</summary>
 
 ```sh
 docs/plans/api-security-hardening
@@ -130,13 +130,13 @@ docs/plans/api-security-hardening
 ```
 </details>
 
-## [senior](./personal/senior/SKILL.md)
+## ✨ [senior](./personal/senior/SKILL.md)
 
-Senior is a routing skill that is build on top of [plan-tasks](#plan-tasks), [staged-plan-tasks](#staged-plan-tasks), and third party skills like [grill-with-docs](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs), [ponytail](https://github.com/DietrichGebert/ponytail/tree/main/skills/ponytail), and others.
+Senior is a routing skill that is build on top of [plan-tasks](#-plan-tasks), [staged-plan-tasks](#-staged-plan-tasks), and third party skills.
 
 It can be used for planning, implementation, code review. And it is made to follow plans made using the skills mentioned before.
 
-### Installation
+### 🛠️ Installation
 
 With dependency snapshots:
 ```sh
@@ -152,10 +152,10 @@ npx skills add dietrichgebert/ponytail --skill ponytail
 npx skills add vytautasjc/skills --skill plan-tasks staged-plan-tasks senior
 ```
 
-## Example
+### 🖥️ Example
 
 <details>
-<summary>Input</summary>
+<summary>💬 Input</summary>
 
 ```sh
 codex > $senior Let's implement a dummy API endpoint that returns 200 OK. Interview me    
@@ -175,9 +175,7 @@ codex > ok
 ```
 </details>
 
----
-
-# Third-Party Skills
+## 🌍 Third-Party Skills
 
 - [mattpocock/skills/domain-modeling](./third-party/domain-modeling/UPSTREAM.md)
 - [mattpocock/skills/grill-with-docs](./third-party/grill-with-docs/UPSTREAM.md)
