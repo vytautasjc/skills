@@ -1,5 +1,5 @@
 # Skills
-Collection of personal agent skills together with their [third-party](#-third-party-skills) dependencies.
+Collection of personal agent skills together with their [third-party](#third-party-skills) dependencies.
 
 ## [plan-tasks](./personal/plan-tasks/SKILL.md)
 
@@ -54,7 +54,7 @@ docs/plans
 
 ## [staged-plan-tasks](./personal/staged-plan-tasks/SKILL.md)
 
-Staged Plan Tasks is built on top of [plan-tasks](#-plan-tasks) to tackle broader tasks, large features composed of multiple tasks.
+Staged Plan Tasks is built on top of [plan-tasks](#plan-tasks) to tackle broader tasks, large features composed of multiple tasks.
 
 ### Installation
 
@@ -138,7 +138,7 @@ docs/plans/api-security-hardening
 
 ## [senior](./personal/senior/SKILL.md)
 
-Senior is a routing skill that is build on top of [plan-tasks](#-plan-tasks), [staged-plan-tasks](#-staged-plan-tasks), and third party skills.
+Senior is a routing skill that is build on top of [plan-tasks](#plan-tasks), [staged-plan-tasks](#staged-plan-tasks), and third party skills.
 
 It can be used for planning, implementation, code review. And it is made to follow plans made using the skills mentioned before.
 
