@@ -126,7 +126,7 @@ docs/plans/api-security-hardening
         ├── PLAN.md
         └── tasks
             ├── 01-harden-auth-endpoints.md
-            └── 02-improve-session-handling.mdp
+            └── 02-improve-session-handling.md
 ```
 </details>
 
