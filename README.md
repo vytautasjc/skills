@@ -184,7 +184,6 @@ codex > ok
 ## Third-Party Skills
 
 - [mattpocock/skills/domain-modeling](./third-party/domain-modeling/UPSTREAM.md)
-- [mattpocock/skills/grill-with-docs](./third-party/grill-with-docs/UPSTREAM.md)
 - [mattpocock/skills/grilling](./third-party/grilling/UPSTREAM.md)
 - [mattpocock/skills/tdd](./third-party/tdd/UPSTREAM.md)
 - [DietrichGebert/skills/ponytail](./third-party/ponytail/UPSTREAM.md)
