@@ -1,14 +1,14 @@
 # Skills
 Collection of personal agent skills together with their [third-party](#third-party-skills) dependencies.
 
-## [setup-vytautas-skills](./personal/setup-vytautas-skills/SKILL.md)
+## [setup-senior-skill](./personal/setup-senior-skill/SKILL.md)
 
 Checks whether a repository has `senior` and all of its prerequisite skills installed, then recommends the repository-level `AGENTS.md` guidance for using that workflow. This skill is available only when explicitly invoked.
 
 ### Installation
 
 ```sh
-npx skills add vytautasjc/skills --skill setup-vytautas-skills
+npx skills add vytautasjc/skills --skill setup-senior-skill
 ```
 
 ## [plan-tasks](./personal/plan-tasks/SKILL.md)

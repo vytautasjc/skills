@@ -1,9 +1,9 @@
 ---
-name: setup-vytautas-skills
+name: setup-senior-skill
 description: Check a repository's Vytautas skills installation and recommend its AGENTS.md workflow setup.
 ---
 
-# Setup Vytautas Skills
+# Setup Senior Skill
 
 Audit the current repository only. Treat the [Vytautas skills README](https://github.com/vytautasjc/skills#readme) as the installation source of truth.
 

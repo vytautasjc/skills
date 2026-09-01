@@ -1,7 +1,0 @@
-interface:
-  display_name: "Setup Vytautas Skills"
-  short_description: "Check Senior setup and propose AGENTS.md guidance"
-  default_prompt: "Use $setup-vytautas-skills to check this repository and recommend its Senior workflow setup."
-
-policy:
-  allow_implicit_invocation: false

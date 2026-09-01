@@ -1,0 +1,7 @@
+interface:
+  display_name: "Setup Senior Skill"
+  short_description: "Check Senior setup and propose AGENTS.md guidance"
+  default_prompt: "Use $setup-senior-skill to check this repository and recommend its Senior workflow setup."
+
+policy:
+  allow_implicit_invocation: false
