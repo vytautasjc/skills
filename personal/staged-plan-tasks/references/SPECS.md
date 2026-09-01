@@ -58,7 +58,7 @@ Shipped stage coverage and evidence stay fixed. A later semantic change adds new
 
 ## Formatting
 
-Use plain prose, two newlines after every heading, correct list syntax, and repository-relative paths. Define each domain term at first use. Treat the file as public: no secrets. Omit optional sections that add no value instead of writing `N/A`, but retain every section needed to satisfy the completeness bar. When the file's whole content is the SPEC, omit surrounding code fences.
+Use plain prose, two newlines after every heading, and correct list syntax. Write every filesystem path relative to the repository root; absolute paths never appear in the SPEC. Define each domain term at first use. Treat the file as public: no secrets. Omit optional sections that add no value instead of writing `N/A`, but retain every section needed to satisfy the completeness bar. When the file's whole content is the SPEC, omit surrounding code fences.
 
 ## Template
 

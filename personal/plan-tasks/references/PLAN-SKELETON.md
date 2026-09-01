@@ -45,7 +45,7 @@ Structural template for a `PLAN.md`. The method and rules governing these sectio
 
     ## Context and Orientation
 
-    Describe the current state relevant to this plan as if the reader knows nothing. Name the key files and modules by full path. Define any non-obvious term you will use. Do not refer to prior plans.
+    Describe the current state relevant to this plan as if the reader knows nothing. Name the key files and modules by their complete repository-relative paths. Define any non-obvious term you will use. Do not refer to prior plans.
 
     ## Validation and Acceptance
 

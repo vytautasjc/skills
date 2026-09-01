@@ -30,7 +30,7 @@ A semantic change belongs in the SPEC and passes the Spec amendment gate. When i
 
 ## Formatting
 
-Use plain prose, two newlines after every heading, correct list syntax, and repository-relative paths. Status boxes are mandatory in `Stages`; keep other sections narrative. When the file's whole content is the ROADMAP, omit surrounding code fences.
+Use plain prose, two newlines after every heading, and correct list syntax. Write every filesystem path relative to the repository root; absolute paths never appear in the ROADMAP. Status boxes are mandatory in `Stages`; keep other sections narrative. When the file's whole content is the ROADMAP, omit surrounding code fences.
 
 ## Skeleton
 

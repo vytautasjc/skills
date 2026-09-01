@@ -33,6 +33,8 @@ Resolve the layout from the nearest `AGENTS.md` first; it overrides the default 
         02-<stage-slug>/
           ...
 
+Write every filesystem path in every staged-planning artifact relative to the repository root. This applies to SPECs, ROADMAPs, stage PLANs, tasks, commands, working directories, examples, logs, and evidence; absolute paths never appear in these artifacts.
+
 Use the current git username as author where a section needs one. Treat these as public documents: no secrets.
 
 # Context isolation across stages

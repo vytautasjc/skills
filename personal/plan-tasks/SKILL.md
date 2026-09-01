@@ -20,6 +20,8 @@ Resolve the planning artifact layout from the nearest applicable `AGENTS.md` fir
         01-config.md     # child tasks
         02-prisma.md
 
+Write every filesystem path in every planning artifact relative to the repository root. This applies to PLANs, tasks, commands, working directories, examples, logs, and evidence; absolute paths never appear in these artifacts.
+
 Use the current git username as author where a section needs one. Treat these as public documents: no secrets.
 
 # Context isolation

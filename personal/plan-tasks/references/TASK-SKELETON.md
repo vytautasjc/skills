@@ -12,7 +12,7 @@ Structural template for a child task file (`tasks/NN-slug.md`). The method and r
 
     ## Context
 
-    What this task needs that the parent plan does not already give: the specific files, types, and terms in play for this task. Keep it to this task.
+    What this task needs that the parent plan does not already give: the specific files, types, and terms in play for this task. Name files by their complete repository-relative paths. Keep it to this task.
 
     ## Plan of Work
 
@@ -20,7 +20,7 @@ Structural template for a child task file (`tasks/NN-slug.md`). The method and r
 
     ## Concrete Steps
 
-    State the exact commands to run and where to run them (working directory). When a command generates output, show a short expected transcript so the reader can compare. This section must be updated as work proceeds.
+    State the exact commands to run and where to run them, expressing every working directory relative to the repository root. When a command generates output, show a short expected transcript so the reader can compare. This section must be updated as work proceeds.
 
     ## Validation / Acceptance
 
