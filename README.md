@@ -1,6 +1,16 @@
 # Skills
 Collection of personal agent skills together with their [third-party](#third-party-skills) dependencies.
 
+## [setup-vytautas-skills](./personal/setup-vytautas-skills/SKILL.md)
+
+Checks whether a repository has `senior` and all of its prerequisite skills installed, then recommends the repository-level `AGENTS.md` guidance for using that workflow. This skill is available only when explicitly invoked.
+
+### Installation
+
+```sh
+npx skills add vytautasjc/skills --skill setup-vytautas-skills
+```
+
 ## [plan-tasks](./personal/plan-tasks/SKILL.md)
 
 Plan Tasks is a skill heavily inspired by [Codex Exec Plans](https://developers.openai.com/cookbook/articles/codex_exec_plans) to create local feature scoped plans split into smaller tasks. Works wonderfully together with [grilling](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) skill to keep you in the driving seat while planning.
