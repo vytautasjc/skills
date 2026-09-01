@@ -1,6 +1,6 @@
 ---
 name: setup-senior-skill
-description: Check a repository's Vytautas skills installation and recommend its AGENTS.md workflow setup.
+description: Check a repository's senior skill by vytautasjc installation and recommend its AGENTS.md workflow setup.
 ---
 
 # Setup Senior Skill
