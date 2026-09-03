@@ -3,7 +3,7 @@ name: plan-tasks
 description: Use when planning, reviewing, or executing any non-trivial coding work — multi-file features, risky refactors, migrations, architecture changes. Decomposes the effort into sequential child tasks, all planned before any are implemented (a later task's plan may depend on an earlier task's planned changes), with stop-and-review gates between decomposition, each task's plan, and each task's result. Not for small localized fixes unless explicitly requested.
 ---
 
-Plan and deliver an effort as a sequence of independently-reviewable **tasks**. 
+Plan and deliver an effort as a sequence of independently-reviewable **tasks**. Use the shortest output that remains complete and unambiguous; add detail only when the work's complexity requires it.
 
 # Instructions
 1. Read [`PLANS.md`](references/PLANS.md) when creating, revising, validating, or executing an executable plan; it defines plan and task content, formatting, and method. Load the structural template for the artifact in hand: [`PLAN-SKELETON.md`](references/PLAN-SKELETON.md) when authoring or revising the parent plan, [`TASK-SKELETON.md`](references/TASK-SKELETON.md) when detailing or executing a task.
@@ -56,3 +56,5 @@ Read the root `PLAN.md`; the first unchecked box in plan's progress is the next 
 # Gate discipline
 
 A gate is a hard stop. At each one, state plainly which gate you are at and what you need approved. Do not bundle approvals — task list, each task's plan, and each task's result are separate sign-offs. Record assumptions and resolved questions in the appropriate decision log section (parent plan if cross-cutting, task if local) as they are settled, with rationale.
+
+Gate messages are concise: name the gate, summarize only the decisions, changes, risks, or evidence needed for review, and ask for the specific approval. Do not restate the artifact, narrate routine work, add generic preambles, or pad a simple answer. A one-line gate message is sufficient when no complexity needs explanation.

@@ -4,11 +4,17 @@ This document describes the requirements for an execution plan, a design documen
 
 ## How to use this file
 
-When authoring an executable plan, follow this file _to the letter_. If it is not in your context, refresh your memory by reading the entire file. Be thorough in reading (and re-reading) source material to produce an accurate specification. When creating a plan, start from the relevant skeleton (`PLAN-SKELETON.md` for a plan, `TASK-SKELETON.md` for a task) and flesh it out as you do your research.
+When authoring an executable plan, follow this file _to the letter_. If it is not in your context, read it in full. Research source material thoroughly. Start from the relevant skeleton (`PLAN-SKELETON.md` or `TASK-SKELETON.md`) and populate only what the work requires.
 
 When discussing an executable plan, record decisions applicable to all child tasks in a log in the plan for posterity; it should be unambiguously clear why any change to the plan was made. These plans and child tasks are living documents, and it should always be possible to restart from _only_ the plan and its tasks and no other work.
 
 When researching a design with challenging requirements or significant unknowns, use tasks to implement proof of concepts, "toy implementations", etc., that allow validating whether the user's proposal is feasible. Read the source code of libraries by finding or acquiring them, research deeply, and include prototypes to guide a fuller implementation.
+
+## Concision
+
+Write the shortest plan that is complete, executable, and unambiguous. Every sentence must supply an action, decision, rationale that affects implementation, necessary context, constraint, recovery instruction, or proof. Remove filler, generic introductions, repeated meaning, obvious advice, ornamental examples, and prose that merely announces a section. State a simple point once and briefly. Expand only where real complexity, risk, ambiguity, or unfamiliar repository context requires it.
+
+Concision never permits missing requirements, hidden decisions, vague steps, or weak acceptance evidence. Preserve all information a context-blind agent needs, but prefer precise paths, symbols, commands, expected results, and stable pointers over explanatory padding. Do not repeat parent-plan content in a task or source material already available under the skill's context rules.
 
 ## Requirements
 
@@ -24,9 +30,9 @@ NON-NEGOTIABLE REQUIREMENTS:
 * Every Task is a vertical slice of one capability, never a horizontal layer. It delivers observable behavior end-to-end — cutting through every layer that capability touches, whatever layers the system has — rather than completing one layer for capabilities that land later. The single exception is a deliberately content-free task that introduces a shared mechanism with no capability content (a connection, a runtime, a framework, a test harness). See `## Tasks`.
 * Every filesystem path in a Plan or Task is relative to the repository root. This includes paths in prose, commands, working directories, examples, transcripts, logs, and evidence.
 
-Purpose and intent come first. Begin by explaining, in a few sentences, why the work matters from a user's perspective: what someone can do after this change that they could not do before, and how to see it working. Then guide the reader through the exact steps to achieve that outcome, including what to edit, what to run, and what they should observe.
+Purpose and intent come first. State as briefly as possible what becomes possible and how to observe it, then give the exact edits, commands, and expected results.
 
-The agent executing your plan can list files, read files, search, run the project, and run tests. It does not know any prior context and cannot infer what you meant from earlier milestones. Repeat any assumption you rely on. Do not point to external blogs or docs; if knowledge is required, embed it in the plan itself in your own words. If a Plan builds upon a prior Plan and that file is checked in, incorporate it by reference. If it is not, you must include all relevant context from that plan.
+The agent executing your plan can list files, read files, search, run the project, and run tests. It knows no prior context. State each relied-on assumption once at the highest scope that needs it. Do not rely on external blogs or docs; embed required knowledge briefly. Reference a checked-in prior plan when needed; otherwise include only its relevant context.
 
 ## Formatting
 
@@ -36,15 +42,15 @@ Omit optional sections when they do not add value. Do not include sections whose
 
 When writing a Plan to a Markdown (.md) file where the content of the file *is only* the single Plan, you should omit the triple backticks.
 
-Write in plain prose. Prefer sentences over lists. Avoid checklists, tables, and long enumerations unless brevity would obscure meaning. Checklists are permitted only in the `Progress` section, where they are mandatory. Narrative sections must remain prose-first.
+Use the most compact clear form. Prefer short prose for rationale and bullets for discrete facts or steps. Avoid tables and long enumerations unless they are genuinely clearer. Checklists are reserved for `Progress`, where they are mandatory.
 
 Use only the sections defined in the relevant skeleton (`PLAN-SKELETON.md` or `TASK-SKELETON.md`). You may omit or combine those sections when the guidance allows, but must not add any section the skeleton does not define. If information does not fit an existing section, place it in the closest applicable one rather than introducing a new heading.
 
 ## Guidelines
 
-Self-containment and plain language are paramount. If you introduce a phrase that is not ordinary English ("daemon", "middleware", "RPC gateway", "filter graph"), define it immediately and remind the reader how it manifests in this repository (for example, by naming the files or commands where it appears). Do not say "as defined previously" or "according to the architecture doc." Include the needed explanation here, even if you repeat yourself.
+Self-containment and plain language are paramount. Define non-ordinary terms (such as "daemon" or "RPC gateway") at first use and tie them to relevant repository paths or commands. Put the definition once at the highest artifact scope that needs it; do not rely on unavailable prior context or architecture documents.
 
-Avoid common failure modes. Do not rely on undefined jargon. Do not describe "the letter of a feature" so narrowly that the resulting code compiles but does nothing meaningful. Do not outsource key decisions to the reader. When ambiguity exists, resolve it in the plan itself and explain why you chose that path. Err on the side of over-explaining user-visible effects and under-specifying incidental implementation details.
+Avoid undefined jargon and implementations that compile without producing meaningful behavior. Resolve consequential ambiguity in the plan and give only the rationale needed to understand the choice. Specify user-visible effects fully and incidental implementation detail only when it constrains correct execution.
 
 Anchor the plan with observable outcomes. State what the user can do after implementation, the commands to run, and the outputs they should see. Acceptance should be phrased as behavior a human can verify ("after starting the server, navigating to [http://localhost:8080/health](http://localhost:8080/health) returns HTTP 200 with body OK") rather than internal attributes ("added a HealthCheck struct"). If a change is internal, explain how its impact can still be demonstrated (for example, by running tests that fail before and pass after, and by showing a scenario that uses the new behavior).
 
@@ -58,7 +64,7 @@ Capture evidence. When your steps produce terminal output, short diffs, or logs,
 
 ## Tasks
 
-Tasks are narrative, not bureaucracy. Introduce each with a brief paragraph that describes the scope, what will exist at the end of the task that did not exist before, the commands to run, and the acceptance you expect to observe. Keep it readable as a story: goal, work, result, proof. Progress and tasks are distinct: tasks tell the story, progress tracks granular work. Both must exist. Never abbreviate a task merely for the sake of brevity, do not leave out details that could be crucial to a future implementation.
+Tasks describe goal, work, result, and proof without bureaucracy. State scope, the new observable outcome, the required edits and commands, and acceptance as compactly as correctness permits. Progress tracks granular state separately. Omit no detail needed by a future implementer, but do not expand a straightforward task to fill a template.
 
 Each task is a **vertical capability**: the smallest end-to-end slice that produces observable behavior for one capability, cutting through every layer that capability touches — whatever layers the system has, be it storage and interface, parser and evaluator, or input and output. It is independently *demonstrable* — you can run it and watch it work — which matters far more than a small diff. When vertical slicing and a smaller, easier-to-review commit conflict, slice vertically; a larger end-to-end task beats a tidy layer. Decompose by capability, never by layer: deliver one whole capability, then the next capability built on it — not one layer for every capability, then the next layer.
 
@@ -101,10 +107,10 @@ The structural templates live in their own files so each operation loads only th
 - Plan: [`PLAN-SKELETON.md`](PLAN-SKELETON.md) — the ordered sections of a `PLAN.md`.
 - Task: [`TASK-SKELETON.md`](TASK-SKELETON.md) — the ordered sections of a `tasks/NN-slug.md`.
 
-Start from the relevant skeleton and flesh it out. Use only the sections it defines; omit or combine them only where the guidance above allows, and never add a section the skeleton does not define. Several sections appear in both skeletons but carry deliberately different scope: a plan's `Progress` is the coarse task index and its `Decision Log` records only decisions affecting more than one task, while a task's `Progress` is the granular checklist for that task and its `Decision Log` records task-local decisions. Keep each in its own skeleton; do not collapse them.
+Start from the relevant skeleton and add only material content. Use only its sections; omit or combine them only where allowed, and add no new section. Required living sections may remain empty until there is something real to record; never add placeholder prose. A plan's `Progress` is the coarse task index and its `Decision Log` is cross-task; a task's `Progress` is granular and its `Decision Log` is task-local.
 
 # Important Notes
 
-If you follow the guidance above, a single, stateless agent -- or a human novice -- can read your plan from top to bottom and produce a working, observable result. That is the bar: SELF-CONTAINED, SELF-SUFFICIENT, NOVICE-GUIDING, OUTCOME-FOCUSED.
+The bar is a minimal, self-contained plan from which a stateless agent or novice can produce and verify the intended result.
 
-When you revise a plan, you must ensure your changes are comprehensively reflected across all sections, including the living document sections, and child tasks, and you must write a note at the bottom of the plan describing the change and the reason why. Plan must describe not just the what but the why for almost everything that is applicable to all plan's tasks.
+When revising, reflect the change wherever it materially affects the plan or tasks and append a concise change note with the reason. Include rationale only when it affects implementation or prevents likely misinterpretation.

@@ -1,14 +1,14 @@
 # Task Skeleton
 
-Structural template for a child task file (`tasks/NN-slug.md`). The method and rules governing these sections live in [`PLANS.md`](PLANS.md); start a new task from this template and flesh it out, keeping every section.
+Structural template for `tasks/NN-slug.md`. Follow [`PLANS.md`](PLANS.md). Keep required sections, but add no filler or placeholder prose; one sentence is enough when it fully communicates the point.
 
     # Task NN — <slug>
 
-    This task is a living document. The sections `Progress`, `Surprises & Discoveries`, `Decision Log`, and `Outcomes and Retrospective` must be kept up to date as work proceeds.
+    Living task: keep `Progress`, `Surprises & Discoveries`, `Decision Log`, and `Outcomes and Retrospective` current.
 
     ## Purpose
 
-    Explain in a few sentences what someone gains after this task is completed and how they can see it working. State the user-visible behavior you will enable.
+    State what becomes possible and how to observe it. Use one sentence when sufficient.
 
     ## Context
 
@@ -16,7 +16,7 @@ Structural template for a child task file (`tasks/NN-slug.md`). The method and r
 
     ## Plan of Work
 
-    Describe, in prose, the sequence of edits and rationale. For each edit, name the file and location (function, module) and what to insert or change. Keep it concrete and minimal.
+    Give the minimal sequence of edits. Name each file and location (function or module), the change, and only rationale that affects implementation.
 
     ## Concrete Steps
 
@@ -50,7 +50,7 @@ Structural template for a child task file (`tasks/NN-slug.md`). The method and r
 
     ## Interfaces and Dependencies
 
-    Be prescriptive. Name the libraries, modules, and services to use and why. Specify the types, traits/interfaces, and function signatures that must exist at the end of the task. Prefer stable names and paths such as `crate::module::function` or `package.submodule.Interface`. E.g.:
+    Include only dependencies and interfaces that constrain implementation. Name required libraries, modules, services, types, and signatures, with rationale only where the choice is non-obvious. Prefer stable names and paths such as `crate::module::function` or `package.submodule.Interface`. Example when useful:
 
     In crates/foo/planner.rs, define:
 

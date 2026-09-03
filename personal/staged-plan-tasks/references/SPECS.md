@@ -47,6 +47,10 @@ Before the Roadmap/Spec gate, compare every discovery source against the SPEC an
 - Every open question states what resolves it and the latest safe gate for deciding it, and its ID appears in the ROADMAP coverage of every stage it could affect. The latest safe gate is no later than the earliest affected stage's Map gate.
 - A future planner needs no transcript, conversation memory, or sibling-stage file.
 
+## Concision bar
+
+The shortest complete specification is the target. State each accepted meaning once, under its canonical ID, using precise terms and observable conditions. Remove filler, generic preambles, repeated rationale, implementation commentary, ornamental examples, and empty optional sections. Use a sentence or compact bullet when sufficient; expand only for genuine domain complexity, ambiguity, risk, edge cases, or contracts. Concision never permits dropping an accepted behavior, constraint, invariant, acceptance case, or context needed to interpret one.
+
 ## Lifecycle
 
 The initial Roadmap/Spec gate approves both the agreement and its first delivery mapping. After that gate, changes follow one of two paths:
@@ -58,17 +62,18 @@ Shipped stage coverage and evidence stay fixed. A later semantic change adds new
 
 ## Formatting
 
-Use plain prose, two newlines after every heading, and correct list syntax. Write every filesystem path relative to the repository root; absolute paths never appear in the SPEC. Define each domain term at first use. Treat the file as public: no secrets. Omit optional sections that add no value instead of writing `N/A`, but retain every section needed to satisfy the completeness bar. When the file's whole content is the SPEC, omit surrounding code fences.
+Use compact plain prose or bullets, whichever is clearer. Use two newlines after headings and correct list syntax. Write every path relative to the repository root. Define domain terms at first use. Treat the file as public: no secrets. Omit optional sections and placeholder text, but retain what the completeness bar requires. When the file's whole content is the SPEC, omit surrounding code fences.
 
 ## Template
 
     # <Effort name> Specification
 
-    This SPEC is the durable source of truth for the effort's agreed outcome. It is maintained in accordance with SPECS.md. The ROADMAP, stage PLANs, and tasks cite IDs from this document rather than duplicate their prose.
+    Roadmap: ROADMAP.md
+    Method: <repository-relative path to SPECS.md, only when checked in>
 
     ## Purpose / Big Picture
 
-    State what someone can do when the effort is complete and how a human can recognize that outcome. Keep delivery order and implementation choices out.
+    State what becomes possible and how to recognize it. Use one sentence when sufficient. Keep delivery and implementation out.
 
     ## Ubiquitous Language
 

@@ -1,16 +1,16 @@
 # Plan Skeleton
 
-Structural template for a `PLAN.md`. The method and rules governing these sections live in [`PLANS.md`](PLANS.md); start a new plan from this template and flesh it out, keeping every section.
+Structural template for a `PLAN.md`. Follow [`PLANS.md`](PLANS.md). Keep required sections, but add no filler or placeholder prose; one sentence is enough when it fully communicates the point.
 
     # <Short, action-oriented description>
 
-    This plan is a living document. The sections `Progress`, `Surprises & Discoveries`, `Decision Log`, `Outcomes`, and `Retrospective` must be kept up to date as work proceeds.
+    Living plan: keep `Progress`, `Surprises & Discoveries`, `Decision Log`, `Outcomes`, and `Retrospective` current.
 
-    If PLANS.md file is checked into the repo, reference the path to that file here from the repository root and note that this document must be maintained in accordance with PLANS.md.
+    Method: <repository-relative path to PLANS.md, only when checked in>
 
     ## Purpose / Big Picture
 
-    Explain in a few sentences what someone gains after this change and how they can see it working. State the user-visible behavior you will enable.
+    State what becomes possible and how to observe it. Use one sentence when sufficient.
 
     ## Progress
 
@@ -45,7 +45,7 @@ Structural template for a `PLAN.md`. The method and rules governing these sectio
 
     ## Context and Orientation
 
-    Describe the current state relevant to this plan as if the reader knows nothing. Name the key files and modules by their complete repository-relative paths. Define any non-obvious term you will use. Do not refer to prior plans.
+    Give only the repository context needed to execute the plan: key repository-relative paths, how they connect, and definitions of non-obvious terms. Do not refer to prior plans.
 
     ## Validation and Acceptance
 

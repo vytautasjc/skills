@@ -20,7 +20,7 @@ Discovery transcripts, chats, and scratch notes are inputs, not execution artifa
 
 A context-blind agent with only the ROADMAP must understand the effort's delivery shape, each stage's observable milestone, order and dependencies, current status, and which SPEC IDs to retrieve next. The ROADMAP does not restate requirements or implementation detail.
 
-Keep each stage entry compact. Define delivery-level terms in plain language. The test is routing: the ROADMAP selects the next stage and its SPEC coverage; the retrieved SPEC entries provide the agreed outcome; the stage PLAN provides implementation.
+Use the shortest wording that passes that routing test. Keep each stage entry compact; state each fact once; omit generic introductions, repeated SPEC prose, routine narration, ornamental examples, and empty optional sections. Expand only when a real dependency, risk, ambiguity, or delivery decision needs explanation. Define delivery-level terms in plain language.
 
 ## Living document
 
@@ -30,15 +30,14 @@ A semantic change belongs in the SPEC and passes the Spec amendment gate. When i
 
 ## Formatting
 
-Use plain prose, two newlines after every heading, and correct list syntax. Write every filesystem path relative to the repository root; absolute paths never appear in the ROADMAP. Status boxes are mandatory in `Stages`; keep other sections narrative. When the file's whole content is the ROADMAP, omit surrounding code fences.
+Use compact plain prose or bullets, whichever is clearer. Use two newlines after headings and correct list syntax. Write every path relative to the repository root. Status boxes are mandatory in `Stages`. Omit optional sections and placeholder text. When the file's whole content is the ROADMAP, omit surrounding code fences.
 
 ## Skeleton
 
     # <Effort name> Roadmap
 
-    This roadmap is a living delivery document maintained in accordance with ROADMAPS.md. The complete agreed outcome lives in SPEC.md. Each stage is an independently shippable milestone planned and executed one at a time.
-
     Spec: SPEC.md
+    Method: <repository-relative path to ROADMAPS.md, only when checked in>
 
     ## Delivery Goal
 

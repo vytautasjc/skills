@@ -3,7 +3,7 @@ name: staged-plan-tasks
 description: Use when an effort is too large for a single plan — it delivers two or more sequential, independently shippable milestones, spans multiple agent runs, or cannot be implementation-planned up front because later work depends on earlier shipped outcomes. Captures the complete agreed outcome in one effort SPEC and coordinates delivery through a ROADMAP, then plans and ships each stage just in time. Offer it instead of a flat plan when sizing up multi-milestone work.
 ---
 
-Plan and deliver a large effort as a sequence of independently-shippable **stages**. One permanent `SPEC.md` preserves the complete agreed outcome, a lean `ROADMAP.md` assigns that outcome to delivery stages, and each current stage gets its own just-in-time `plan-tasks` tree.
+Plan and deliver a large effort as independently-shippable **stages**. A permanent `SPEC.md` holds the agreed outcome, a lean `ROADMAP.md` assigns it to stages, and the current stage gets a just-in-time `plan-tasks` tree. Use the shortest output that remains complete and unambiguous; expand only for genuine complexity.
 
 # When to use
 
@@ -83,3 +83,5 @@ Read `ROADMAP.md`; the first unchecked stage is next. Retrieve that stage's assi
 # Gate discipline
 
 State plainly which gate is active and what requires approval. Keep the Roadmap/Spec gate, Roadmap amendment gate, Spec amendment gate, each stage's internal gates, and the Stage gate as separate sign-offs. The initial gate approves the agreement and initial delivery mapping; a Roadmap amendment gate approves delivery-only changes made between Stage gates; a Spec amendment gate approves semantic changes; a Stage gate approves demonstrated delivery and may also reallocate unchanged future work.
+
+Gate messages are concise: name the gate, summarize only decisions, changes, risks, coverage gaps, open questions, or evidence needed for review, and ask for the specific approval. Do not restate the artifacts, narrate routine work, add generic preambles, or pad a simple answer. A one-line gate message is sufficient when no complexity needs explanation.
