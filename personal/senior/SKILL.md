@@ -45,7 +45,8 @@ Not done until **both** gates hold:
 
 ## Review
 
-Three required lenses on the diff:
+Unless specifically instructed to work autonomously, always grill user using `grilling` skill when reviewing if review contains questions, comments are not fully clear, are ambiguous or contradict one another, or if addressing review comments requires broad changes. Three required lenses on the diff:
 
 - Over-engineering — `ponytail` skill.
 - Test quality — `tdd` skill, judged against the good/bad examples in its `tests.md`.
+- Shared understanding with the user, use `grilling` skill to clarify outstanding questions with the user.
