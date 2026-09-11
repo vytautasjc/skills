@@ -24,6 +24,10 @@ Before performing this workflow:
 3. Then continue with the Senior workflow below.
 4. If any of the skills listed above is unavailable, stop and report that the required skill is missing.
 
+## Communication
+
+Respond in ASD-STE100 Simplified Technical English. Never pad a simple answer to sound thorough. Be concise.
+
 ## Plan
 
 Route by milestone count: `plan-tasks` skill for a single milestone, `staged-plan-tasks` skill for two or more sequential, independently-shippable ones. Always grill user using `grilling` skill when planning, unless specifically instructed to work autonomously. Plans live under `docs/`, never the repo root.
