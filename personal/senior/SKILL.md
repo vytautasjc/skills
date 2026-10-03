@@ -47,9 +47,13 @@ Not done until **both** gates hold:
 - Lazy pass — `ponytail` skill: the simplest thing that works, no speculative code.
 - Test-first cycle — `tdd` skill: red → green per behavior, regression test first for a bug.
 
-## Review
+## Code Review
 
-Unless specifically instructed to work autonomously, always grill user using `grilling` skill when reviewing if review contains questions, comments are not fully clear, are ambiguous or contradict one another, or if addressing review comments requires broad changes. Three required lenses on the diff:
+Treat every review comment as a proposal to evaluate, not an instruction to apply. Check every comment against the requirements, code, tests, and the rest of the review. When a different solution is materially better, challenge the comment with evidence, explain the trade-off, and recommend the concrete alternative.
+
+Reconcile the complete set of comments before changing code. For each contradiction, name the conflicting comments and their incompatible outcomes, recommend which one should govern, then use the `grilling` skill to ask the user which to apply. Wait for that decision before implementing either outcome.
+
+Unless specifically instructed to work autonomously, also use the `grilling` skill when a review contains questions, unclear or ambiguous comments, or comments that require broad changes. Prefix every grilling question with `Review comment:` followed by a short quote from the comment and its file/line or comment identifier when available. Three required lenses on the diff:
 
 - Over-engineering — `ponytail` skill.
 - Test quality — `tdd` skill, judged against the good/bad examples in its `tests.md`.
