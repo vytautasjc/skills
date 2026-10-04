@@ -8,7 +8,15 @@ A ROADMAP maps the effort SPEC to small **stages**. It tracks accepted results. 
 
 ## Stage decomposition
 
-A **stage** delivers one responsibility from start to end across all necessary implementation areas. It has a focused observable outcome and its own acceptance criteria. Give separate responsibilities separate stages, even in the same user journey. For example, Google authentication and authentication rate limiting are separate stages.
+Decompose stages into **vertical feature slices**. Each feature stage delivers one responsibility from start to end across all necessary implementation areas. Each feature stage has a focused observable outcome and its own acceptance criteria. Give separate responsibilities separate stages, even in the same user journey. For example, user authentication and authentication rate limiting are separate stages.
+
+Keep each feature's data, settings, interfaces, and tests in the stage that delivers the feature. Divide stages by observable feature behavior, not by backend, frontend, storage, or other horizontal layers. Prefer a larger vertical slice to a smaller stage that contains only one layer.
+
+Before Roadmap/Spec approval, check that a human can observe each feature stage working without the next stage. If this check fails, combine the incomplete stage with the stage that makes the feature behavior observable.
+
+The only exception to vertical slicing is a stage for a **shared mechanism**. This stage must have no feature-specific content. Examples include a runtime, storage connection, configuration loader, or test harness. Use this exception only when the mechanism needs a separate boundary from the first feature. Write the reason. Demonstrate that the mechanism starts, connects, loads configuration, or runs tests. Keep future features' data, settings, and interfaces in their feature stages.
+
+If one feature is too large for a stage, first deliver a **walking skeleton**. This is the smallest path through all necessary layers that produces observable behavior. Add more behavior in later vertical slices.
 
 Before Roadmap/Spec approval, divide stages that combine separate responsibilities. Let a narrow exception apply only if separation causes an invalid intermediate state. Write the reason and affected boundary.
 

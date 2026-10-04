@@ -22,11 +22,23 @@ Open sibling task files only to investigate a changed or failing **contract**. A
 
 Define each unfamiliar term at its canonical scope, or link its glossary entry. Use repository-relative file paths. Identify functions and modules accurately. Show connections only when they help implementation. Keep necessary knowledge in the current repository and explicit references. Keep conversations and sibling task reasons outside execution dependencies.
 
+## Discovery capture
+
+Before Map approval, compare each discovery source with the PLAN and task map. Discovery sources include user requests, grilling answers, and supplied notes. If discovery already passed this check, use its approved agreement document as the source. Include later requests, answers, and notes.
+
+- Record each agreed requirement, constraint, contract, acceptance condition, and decision. Include agreements for future tasks.
+- Give each item a canonical file and stable ID or anchor. Reference the item from each affected task map entry.
+- Keep unresolved questions separate from accepted decisions. Specify each question's latest safe gate for resolution.
+
+Write the check result and missing items in Plan State and Current Decisions. Resolve capture gaps before Map approval. Complete capture only after you record every agreed item and reference it from each affected task map entry.
+
+When you detail a task, retrieve the agreements mapped to that task before you choose implementation details. Treat accepted decisions as constraints. Resolve only undecided details. Use the applicable approval gate to change an accepted decision.
+
 ## Task map
 
 Map all tasks before you detail a task. Give each entry an observable outcome, scope boundary, dependencies, applicable agreements, and acceptance IDs. Write stable PLAN acceptance IDs, such as `A001`. Give shared constraints to each applicable task.
 
-Before the Map gate, write shared contracts only when they affect decomposition. Keep all agreed future outcomes, boundaries, dependencies, acceptance references, and constraints in the PLAN, task map, or canonical references. Prepare future implementation detail when its turn starts.
+Before the Map gate, define new shared contracts only when they affect decomposition. Keep all agreed future outcomes, boundaries, dependencies, acceptance references, and constraints in the PLAN, task map, or canonical references. Prepare undecided implementation details when the applicable task's turn starts.
 
 ## Decomposition
 

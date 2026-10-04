@@ -33,11 +33,11 @@ Use [Current context and ownership](references/PLANS.md#current-context-and-owne
 
 First, map all tasks. Then prepare the current task brief. Get plan approval. Implement the task. Get result acceptance. Use accepted predecessor results to detail the next task. At each gate, stop for explicit approval. Keep earlier approvals valid when you continue work.
 
-1. **Decompose.** Examine the repository. Write `PLAN.md`. Complete [Decomposition](references/PLANS.md#decomposition) and [Task map](references/PLANS.md#task-map) coverage before map approval. Keep future tasks as map entries until their turn. Set the state to `awaiting-map-review`.
+1. **Decompose.** Examine the repository. Write `PLAN.md`. Before map approval, complete the checks in [Discovery capture](references/PLANS.md#discovery-capture), [Decomposition](references/PLANS.md#decomposition), and [Task map](references/PLANS.md#task-map). Keep future tasks as map entries until their turn. Set the state to `awaiting-map-review`.
 
-   **Map gate.** Show the task breakdown. Wait for approval of the tasks and their order before you detail a task.
+   **Map gate.** Show the task breakdown. Show the discovery capture check result. Wait for approval of the tasks and their order before you detail a task.
 
-2. **Detail the current task.** After map approval, set the state to `detailing`. Write `tasks/NN-slug.md` as a short execution brief. For proposed concurrent work, detail only that small set. Use accepted predecessor contracts and the current repository. Use the task-size check in `PLANS.md`. Agree the behavioral test seams. Write the remaining implementation work. Set the state to `awaiting-plan-review`.
+2. **Detail the current task.** After map approval, set the state to `detailing`. Retrieve the agreements mapped to the current task. Use [Discovery capture](references/PLANS.md#discovery-capture). Write `tasks/NN-slug.md` as a short execution brief. For proposed concurrent work, detail only that small set. Use accepted predecessor contracts and the current repository. Use the task-size check in `PLANS.md`. Agree the behavioral test seams. Write the remaining implementation work. Set the state to `awaiting-plan-review`.
 
    **Plan gate.** Show the task plan and the scope-review conclusion, if applicable. Get answers for open decisions. Wait for approval before you change source for this task. After approval, set the state to `implementing`.
 

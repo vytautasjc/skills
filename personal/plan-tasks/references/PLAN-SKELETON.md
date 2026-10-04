@@ -42,6 +42,8 @@ Use this template for `PLAN.md`. Use [`PLANS.md`](PLANS.md). Keep Purpose, Progr
     Write the plan state and the approved concurrent set, if applicable.
     Identify owners of shared files and integration.
     Write decomposition checks, exceptions, and task dependencies.
+    Write the discovery capture check result.
+    Use PLANS.md Discovery capture.
     Include decisions or findings that still control multiple tasks.
     Include future obligations and open questions.
     Give important decisions stable IDs or named anchors.
