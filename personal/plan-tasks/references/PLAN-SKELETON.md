@@ -69,6 +69,7 @@ Use this template for `PLAN.md`. Use [`PLANS.md`](PLANS.md). Keep Purpose, Progr
     ## Audit References
 
     Give direct references to decision history and delivered evidence.
-    Include the repository-relative file and ID or anchor.
     Use PLANS.md Current instructions and history.
+    For Git history, include the full commit hash, repository-relative file path, and ID or anchor.
+    For current evidence, include the repository-relative file path and ID or anchor.
     When you make the PLAN shorter, write the preservation-check result here.

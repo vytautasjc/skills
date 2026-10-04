@@ -138,17 +138,21 @@ Complete a task only after result acceptance. Complete the plan only after accep
 
 ## Current instructions and history
 
-Active documents describe current approved work. Keep agreed behavior and constraints in the PLAN or its canonical agreement references. Keep implementation decisions at the narrowest scope that uses them. Give those decisions stable IDs or named anchors. Add references to those decisions in dependent tasks.
+Keep artifacts as short as possible. Keep all agreed information and decisions. Write each item once at its canonical scope. Use direct references where other documents need the item. Remove repeated text and completed edit instructions when they no longer help you continue work.
+
+Active documents describe current approved work. Keep agreed behavior and constraints in the PLAN or its canonical agreement references. Keep implementation decisions at the narrowest scope that uses them. Give those decisions stable IDs or named anchors. Keep reasons that explain the choice or prevent a future mistake. Add references to those decisions in dependent tasks.
 
 Keep unresolved questions, unfinished obligations, and decisions that control future work active. This rule also applies when the current task does not load them.
 
-Remove an old decision from default execution context only after its approved replacement is explicit. Keep the earlier decision and reason in a directly linked history record. Identify it as `Superseded`. Include its replacement reference, change reason, approval record, affected task contracts, and acceptance evidence.
+Use Git history for earlier document versions, replaced decisions, earlier verification rounds, and completed review changes. Do not create a separate history file or directory when Git preserves the records.
 
-One archive file can hold named records. Load only the necessary record to understand a current decision or investigate a problem. Git history keeps ordinary edits. Keep agreed decisions in identifiable, canonical records.
+Remove an approved decision from active context only after you explicitly record its approved replacement. Keep a short change record at its canonical scope. Identify the earlier decision as `Superseded`. Include the earlier decision's stable ID and replacement reference. Include the reason for the change, approval record, and affected contracts and evidence. Keep the earlier definition and reasons in Git.
 
-You can keep replaced verification rounds and completed review changes in the same history record. Keep delivered evidence references. Identify which evidence still applies.
+For a historical reference, give the full commit hash, repository-relative file path, and stable ID or anchor. Use a commit that contains the referenced text. Read that text only for audit or investigation. Keep current agreements, future obligations, and applicable evidence in current documents. Keep approvals necessary to resume work in current documents.
 
-Before you make an earlier task shorter, reconcile approved changes, open review work, and evidence applicability. For example, a Session can change from PostgreSQL to Redis. Its active contract keeps expiry, rotation, failure behavior, and accepted re-login after data loss. Refer directly to the replaced PostgreSQL decision, change reason, approval, affected task contracts, and evidence. A dependent Project ownership task reads the current Session contract. Keep earlier reasons directly available when needed.
+Before you remove historical text, verify that Git contains all information and decisions in that text. Keep uncommitted records in place until the repository's authorized commit procedure preserves them. If Git history is unavailable, keep a short record in the existing document. Keep delivered evidence references. Identify which evidence still applies.
+
+Before you make an earlier task shorter, check approved changes and open review work. Resolve any conflicts. Identify which evidence still applies. Keep the task's current contract complete. Dependent tasks read that contract. Keep earlier definitions and reasons available through direct historical references.
 
 For an accepted result, write a short parent handoff. Include contracts and outcomes necessary for future work, with canonical paths or symbols and evidence references. Recommend a new conversation for the next task. File isolation cannot remove work already loaded in a conversation.
 
@@ -160,7 +164,7 @@ Before you make documents shorter, list each agreed item in the affected documen
 
 - Each requirement, constraint, contract, acceptance condition, and important decision has one identifiable, canonical location. Its meaning stays unchanged.
 - Each moved item has a direct reference to its file and ID or anchor. The current task includes or references each applicable agreement. It has no dependency on a history search.
-- Each replaced decision has an explicit approved replacement. Its linked history record keeps reasons, approval, affected contracts, and evidence.
+- Each replaced decision has an explicit approved replacement and a short change record. Its historical reference points to the earlier definition and reasons. Approval, affected contracts, and evidence remain available.
 - The task map and dependent tasks refer to current contracts. Examine sibling contract references only for the contract-change exception. Use the parent map to audit coverage.
 - All open questions, unfinished obligations, future constraints, acceptance IDs, and delivered evidence references remain available. Explicitly identify invalid evidence and necessary reruns.
 - Each kept validation result links to its reproducible procedure with Acceptance and evidence. This rule is applicable after removal of completed edit steps.

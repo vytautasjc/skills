@@ -112,7 +112,7 @@ Also make sure these conditions hold:
 - Delivered coverage remains fixed.
 - Semantic changes have passed the Spec amendment gate.
 
-Index SPEC history records in the Revision Log by stable ID or named anchor. Write the check result there. Write ROADMAP checks in Audit References. Write PLAN and task checks in their status or audit sections.
+Keep short SPEC change records in the Revision Log. Identify each record by stable ID or named anchor. Follow PLANS.md Current instructions and history to reference earlier definitions in Git. Write the preservation-check result in the Revision Log. Write ROADMAP checks in Audit References. Write PLAN and task checks in their status or audit sections.
 
 ## Formatting
 
@@ -202,5 +202,5 @@ Treat the file as public. Keep secrets out of it. Omit unnecessary optional sect
       Approval gate: Roadmap/Spec | Spec amendment
       Approval record: <decision reference and date, pending until approval>
       Affected contracts/evidence: <direct references and applicability>
-      History: <file and ID or anchor for replaced records, for audit or investigation only>
+      History: <full commit hash, repository-relative file path, and ID or anchor for replaced records>
       Date/Author: (2026-06-20 14:00Z) / <git username>

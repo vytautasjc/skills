@@ -39,6 +39,7 @@ Use this template for `tasks/NN-slug.md`. Use [PLANS.md](PLANS.md) for decomposi
     Write validation procedures, or reference them directly, with PLANS.md Acceptance and evidence.
     Put recovery instructions with work with risk.
     Shorten completed edit instructions when appropriate.
+    Follow PLANS.md Current instructions and history to preserve information that you remove.
     Keep validation procedures or direct references to them.
 
     ## Acceptance and validation

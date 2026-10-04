@@ -143,6 +143,7 @@ Use short paragraphs or lists, whichever is clearer. Put one blank line after ea
     ## Audit References
 
     Give direct references to replaced decisions, review records, and delivered evidence.
-    Include the file and ID or anchor.
+    Follow PLANS.md Current instructions and history for historical references.
+    For current evidence, include the repository-relative file path and ID or anchor.
     Identify history as material for audit or investigation.
     When you make the ROADMAP shorter, write the preservation-check result here.
