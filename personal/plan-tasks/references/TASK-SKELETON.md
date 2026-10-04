@@ -1,39 +1,60 @@
 # Task Skeleton
 
-Template for `tasks/NN-slug.md`. Follow [PLANS.md](PLANS.md), including decomposition, size review, preservation, and explicit state. Resumable without conversation history, using explicit references to governing agreements and repository sources. Use these six compact sections.
+Use this template for `tasks/NN-slug.md`. Use [PLANS.md](PLANS.md) for decomposition, size review, preservation, and explicit state. Make continuation possible without conversation history. Refer directly to applicable agreements and repository sources. Use these six short sections.
 
     # Task NN — <responsibility>
 
     Current task: <NN-slug>
     State: <task state from PLANS.md>
-    Remaining: <exact next action or approval>
+    Remaining: <specified next action or approval>
     Parent: <repository-relative PLAN path>
 
     ## Outcome and scope
 
-    State the task's bounded result and exclusions needed to prevent scope expansion. Cite its governing agreement and acceptance IDs; name its portion of scenarios spanning tasks.
+    Write the task result and its boundary.
+    Write exclusions necessary to control scope.
+    Cite applicable agreement and acceptance IDs.
+    Identify its portion of scenarios that span tasks.
 
     ## Owned paths and implementation area
 
-    Name the sole owner and explicit write paths. State the backend, frontend, shared-contract, or integration boundary and who owns each shared file. Read dependencies do not grant write ownership. Record any invalid-intermediate-state exception and its reason.
+    Identify the single owner and explicit write paths.
+    Write the backend, frontend, shared-contract, or integration boundary.
+    Identify the owner of each shared file.
+    Read dependencies do not give write ownership.
+    Write each exception for an invalid intermediate state and its reason.
 
     ## Required contracts and dependencies
 
-    Reference every governing agreement by repository path and stable ID, symbol, or anchor: applicable invariants and terms, parent decisions, required approved shared contracts, accepted handoffs, and relevant source. State predecessor outcomes and approval status. Keep local contracts here only when they have no other canonical home.
+    Refer to each applicable agreement by repository path and stable ID, symbol, or anchor.
+    Include applicable invariants, terms, parent decisions, necessary approved shared contracts, accepted handoffs, and related source.
+    Write predecessor outcomes and approval status.
+    Keep local contracts here only if they have no other canonical location.
 
     ## Implementation steps
 
-    Give minimal ordered work by file/module. Keep edit commands beside their steps, with repository-relative working directory and expected result. Define or directly reference validation procedures using PLANS.md Acceptance and evidence. Keep recovery instructions beside risky work. Compact completed edit instructions while retaining validation procedure definitions or their direct pointers.
+    Give the minimum ordered work by file or module.
+    Put edit commands with their steps.
+    Include the repository-relative working directory and expected result.
+    Write validation procedures, or reference them directly, with PLANS.md Acceptance and evidence.
+    Put recovery instructions with work with risk.
+    Shorten completed edit instructions when appropriate.
+    Keep validation procedures or direct references to them.
 
     ## Acceptance and validation
 
-    For each acceptance ID/portion, give the behavior, agreed test seam, stable procedure reference, latest result, date, and tested revision or uncommitted-tree description. Apply PLANS.md Acceptance and evidence to the task boundary. Mark invalid evidence and required reruns in remaining work.
+    For each acceptance ID or portion, write the behavior and agreed test seam.
+    Give the stable procedure reference, latest result, date, and tested revision or description of uncommitted changes.
+    For the task boundary, follow PLANS.md Acceptance and evidence.
+    Identify invalid evidence and necessary reruns in remaining work.
 
     ## Current status and remaining work
 
-    Record planning approval, result-review state, acceptance or reopening, unresolved obligations, and granular remaining work. Preserve scope-review and preservation-check conclusions; link history records as defined in PLANS.md Current instructions and history.
+    Write planning approval, result-review state, acceptance or reopening, open obligations, and detailed remaining work.
+    Keep scope-review and preservation-check conclusions.
+    Give history references with PLANS.md Current instructions and history.
 
     - [x] <completed work and evidence reference>.
     - [ ] <remaining action, validation, or approval>.
 
-    On acceptance, reference the parent handoff.
+    After acceptance, refer to the parent handoff.

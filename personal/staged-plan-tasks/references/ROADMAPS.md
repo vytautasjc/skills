@@ -1,50 +1,72 @@
 # Roadmaps
 
-This document defines the `ROADMAP.md` artifact — the delivery coordinator for a multi-stage effort. Read it whenever you create, revise, or resume a ROADMAP. The effort's agreed outcome lives in one permanent SPEC governed by [`SPECS.md`](SPECS.md). Work inside the current stage follows the `plan-tasks` skill and its `PLANS.md` reference.
+This reference gives rules for `ROADMAP.md`, the delivery coordinator for an effort with multiple stages. To create, revise, or continue a ROADMAP, read this file. Keep the agreed outcome in one permanent SPEC with the rules in [`SPECS.md`](SPECS.md). For current stage work, use `plan-tasks` and its `PLANS.md` reference.
 
 ## What a ROADMAP is
 
-A ROADMAP maps the effort SPEC onto small **stages**, tracks accepted results, and carries delivery knowledge later stages need without opening earlier stage trees.
+A ROADMAP maps the effort SPEC to small **stages**. It tracks accepted results. It holds delivery knowledge for remaining stages without dependencies on earlier stage trees.
 
 ## Stage decomposition
 
-A stage delivers one coherent responsibility end-to-end across all required implementation areas, with a focused observable outcome and its own acceptance criteria. Separate responsibilities become separate stages, even when they affect the same user journey: Google authentication and authentication rate limiting are separate stages.
+A **stage** delivers one responsibility from start to end across all necessary implementation areas. It has a focused observable outcome and its own acceptance criteria. Give separate responsibilities separate stages, even in the same user journey. For example, Google authentication and authentication rate limiting are separate stages.
 
-Before Roadmap/Spec approval, split stages that combine separate responsibilities; record a narrow exception only when separation would leave an invalid intermediate state, naming the reason and affected boundary. Record dependencies between stages and prerequisites for production release. Stages may depend on accepted outcomes or be independent. Acceptance in development leaves production release subject to those prerequisites.
+Before Roadmap/Spec approval, divide stages that combine separate responsibilities. Let a narrow exception apply only if separation causes an invalid intermediate state. Write the reason and affected boundary.
 
-Assign each stage's acceptance slice using [SPECS.md Stable IDs and traceability](SPECS.md#stable-ids-and-traceability). Decompose the current stage into tasks using [PLANS.md Decomposition](../../plan-tasks/references/PLANS.md#decomposition).
+Write dependencies between stages. Give production release prerequisites as a separate list. Stages can depend on accepted outcomes or be independent. Acceptance in development does not remove production release prerequisites.
+
+Give each stage's acceptance portion through [Stable IDs and traceability](SPECS.md#stable-ids-and-traceability). Divide the current stage into tasks through [Decomposition](../../plan-tasks/references/PLANS.md#decomposition).
 
 ## Artifact ownership
 
-Use [SPECS.md Canonical ownership](SPECS.md#canonical-ownership) when recording agreements or delivery decisions, and [Stable IDs and traceability](SPECS.md#stable-ids-and-traceability) when assigning coverage. The skeleton below defines the ROADMAP's structure.
+To write agreements or delivery decisions, use [Canonical ownership](SPECS.md#canonical-ownership). To give coverage, use [Stable IDs and traceability](SPECS.md#stable-ids-and-traceability). Use the skeleton below for ROADMAP structure.
 
 ## Lean and routable
 
-A context-blind agent with only the ROADMAP must understand the effort's delivery shape, each stage's focused observable outcome, order and dependencies, current status, and which SPEC IDs to retrieve next. The ROADMAP does not restate requirements or implementation detail.
+The ROADMAP must give an agent without conversation history enough information to select work. Include delivery structure, each stage's observable outcome, order, dependencies, current status, and SPEC IDs to read next. Keep requirement definitions and implementation detail in their own documents.
 
-Use the shortest wording that passes that routing test. Keep each stage entry compact; state each fact once; omit generic introductions, repeated SPEC prose, routine narration, ornamental examples, and empty optional sections. Expand only when a real dependency, risk, ambiguity, or delivery decision needs explanation. Define delivery-level terms in plain language.
+Keep each stage entry short. Write each fact once. Omit empty optional sections. Add detail only for dependencies, risks, unclear meaning, or delivery decisions. Define each delivery term in plain language.
 
 ## Living document
 
-At each Stage gate, check the shipped stage's box, record outcomes needed by later stages, and reassign unchanged SPEC IDs among remaining unstarted stages when evidence warrants it. If a delivery-only change cannot safely wait for a Stage gate, use the Roadmap amendment gate before entering the affected stage's Map gate or resuming implementation. Keep shipped stage coverage fixed. Record every delivery change and its rationale in the Decision Log.
+At each Stage gate, set the accepted stage's box to checked. Write outcomes necessary for remaining stages. With approval, reassign unchanged SPEC IDs among stages that have not started when evidence shows that the change is necessary.
 
-A semantic change belongs in the SPEC and passes the Spec amendment gate. When it affects delivery, update ROADMAP coverage in the same amendment and point the ROADMAP Decision Log entry to the SPEC revision rather than copying its rationale.
+If a delivery-only change cannot safely wait, use the Roadmap amendment gate. Get approval before the affected Map gate or continued implementation. Keep delivered stage coverage fixed. Write each delivery change and its reason in the Decision Log.
 
-When superseding decisions or compacting the ROADMAP, follow [History and preservation](SPECS.md#history-and-preservation); keep the ROADMAP a direct index to governing delivery agreements.
+For a semantic change, update the SPEC. Pass the Spec amendment gate. If delivery changes, update ROADMAP coverage in the same amendment. Add a link from the ROADMAP Decision Log entry to the SPEC revision. Keep the reason in that revision.
+
+To replace decisions or make the ROADMAP shorter, use [History and preservation](SPECS.md#history-and-preservation). Keep direct references to applicable delivery agreements.
 
 ## Resume state and retrieval
 
-Near the top, record `Current stage`, `State`, and `Remaining`. States are `awaiting-roadmap-spec-review`, `ready-to-plan`, `working-stage`, `awaiting-stage-review`, `awaiting-roadmap-amendment-review`, `awaiting-spec-amendment-review`, and `complete`. Amendment states also name the state to resume after approval. During `working-stage`, the PLAN's explicit task state selects the action. Requested stage revisions return to `working-stage`, reopen affected tasks in the PLAN, clear their accepted checkboxes, and record remaining work. A checkbox means accepted delivery; approval gates remain pending until explicitly accepted.
+Near the top, write `Current stage`, `State`, and `Remaining`. Use these states:
 
-Retrieve complete stage SPEC coverage for decomposition and stage acceptance. During task planning and execution, retrieve only the current task's assigned entries, referenced contracts and invariants, and necessary glossary entries. Maintain the complete coverage map across all phases. At an accepted result, preserve the contracts later work needs in the appropriate parent handoff and recommend a fresh conversation for the next task or stage.
+- `awaiting-roadmap-spec-review`
+- `ready-to-plan`
+- `working-stage`
+- `awaiting-stage-review`
+- `awaiting-roadmap-amendment-review`
+- `awaiting-spec-amendment-review`
+- `complete`
+
+For amendment states, identify the state to resume after approval. During `working-stage`, select the action from the PLAN's explicit task state.
+
+For requested stage revisions, set the state to `working-stage`. Reopen affected tasks in the PLAN. Clear their accepted checkboxes. Write remaining work.
+
+A checked box means accepted delivery. Keep approval gates pending until explicit acceptance.
+
+For decomposition and stage acceptance, load full stage SPEC coverage. For task planning and execution, load only the task's assigned entries, referenced contracts and invariants, and necessary glossary entries. Keep the full coverage map across all phases.
+
+After result acceptance, keep contracts necessary for future work in the applicable parent handoff. Recommend a new conversation for the next task or stage.
 
 ## Size and decomposition review
 
-Use roughly 50–150 words per stage entry as a soft routing target. Larger entries trigger review for duplicated SPEC content, independent responsibilities, and clearer dependency references. Never drop agreements or hide necessary detail in another mandatory document to meet a target. Required shared contracts and integration work have explicit owners in the current stage task map.
+Use approximately 50–150 words per stage entry as a flexible target. For larger entries, examine repeated SPEC content, independent responsibilities, and dependency references.
+
+Keep all agreements and necessary detail available. A target does not justify a new mandatory document that hides necessary detail. Give necessary shared-contract and integration work explicit owners in the current stage task map.
 
 ## Formatting
 
-Use compact plain prose or bullets, whichever is clearer. Use one blank line after headings and correct list syntax. Write every path relative to the repository root. Status boxes are mandatory in `Stages`. Omit optional sections and placeholder text. When the file's whole content is the ROADMAP, omit surrounding code fences.
+Use short paragraphs or lists, whichever is clearer. Put one blank line after each heading. Use correct list syntax. Write each path relative to the repository root. Use status boxes in `Stages`. Omit unnecessary optional sections and placeholder prose. For a standalone ROADMAP file, omit outer code fences.
 
 ## Skeleton
 
@@ -52,35 +74,52 @@ Use compact plain prose or bullets, whichever is clearer. Use one blank line aft
 
     Current stage: <NN-slug | none>
     State: <state from Resume state and retrieval>
-    Remaining: <exact next action or approval; state to resume after amendment>
+    Remaining: <specified next action or approval, and resume state after amendment>
     Spec: <repository-relative SPEC path>
-    Method: <repository-relative path to ROADMAPS.md, only when checked in>
+    Method: <repository-relative ROADMAPS.md path, only if stored in the repository>
 
     ## Delivery Goal
 
-    Summarize how the focused stages combine to realize the SPEC. Keep detailed behavior in the SPEC.
+    Write how the stages together deliver the SPEC.
+    Keep detailed behavior in the SPEC.
 
     ## Stages
 
-    The delivery sequence and full coverage map. One entry per stage: status box, completion timestamp once accepted, ordinal, slug, one-line focused observable outcome, assigned SPEC IDs with acceptance portions and final ownership when shared, and a PLAN pointer once implementation planning begins. The explicit state above selects the resume action.
+    Give the delivery sequence and full coverage map.
+    Use one entry per stage.
+    Include a status box, ordinal, slug, and one-line observable outcome.
+    After acceptance, add the completion timestamp.
+    Give assigned SPEC IDs.
+    For shared acceptance, identify portions and final ownership.
+    When implementation planning starts, add the PLAN reference.
+    Use the explicit state above to select the resume action.
 
-    - [x] (2026-06-20 14:00Z) 01 google-authentication — controlled Google sign-in reaches a protected page and logout revokes access
+    - [x] (2026-06-20 14:00Z) 01 google-authentication — controlled Google sign-in opens a protected page and logout removes access
           Coverage: R001-R004, C001, I001, A001-A005
           Plan: docs/plans/<effort-slug>/stages/01-google-authentication/PLAN.md
-    - [ ] 02 authentication-rate-limiting — authentication limits enforce safe HTTP outcomes and browser retry handling
+    - [ ] 02 authentication-rate-limiting — authentication limits produce safe HTTP results and browser retry behavior
           Coverage: R005-R008, C002, A006-A010, Q001
     - [ ] 03 multi-instance-collaboration — clients on separate replicas edit the same durably committed document
           Coverage: R009-R011, C003, I002, A011-A014
 
-    When a normative ID applies to multiple stages, list it in each contributing stage. Apply SPECS.md Stable IDs and traceability to shared acceptance coverage. List an open-question ID in every stage whose planning or implementation its answer could affect; its latest safe gate must be no later than the earliest affected stage's Map gate. Retain the coverage pointer after resolution.
+    Give a normative ID in each stage where it applies.
+    For shared acceptance coverage, use SPECS.md Stable IDs and traceability.
+    Give each open-question ID in each stage whose planning or implementation its answer can affect.
+    Keep its latest safe gate at or before the earliest affected stage's Map gate.
+    Keep the coverage reference after resolution.
 
     ## Dependencies and Release Prerequisites
 
-    Describe dependencies between stages in terms of accepted outcomes or SPEC IDs. Identify production release prerequisites separately from implementation order. Explain the order without opening prior stage trees.
+    Write dependencies between stages through accepted outcomes or SPEC IDs.
+    Give production release prerequisites as a separate list from implementation order.
+    Explain the order without dependencies on earlier stage trees.
 
     ## Decision Log
 
-    Record current delivery decisions under stable IDs or named anchors: stage boundaries, ordering, dependency changes, and reassignment of unchanged SPEC IDs. For semantic changes, point to the SPEC Revision Log; for decision history, apply PLANS.md Current instructions and history.
+    Write delivery decisions with stable IDs or named anchors.
+    Include stage boundaries, order, dependency changes, and reassignment of unchanged SPEC IDs.
+    For semantic changes, refer to the SPEC Revision Log.
+    For decision history, use PLANS.md Current instructions and history.
 
     - D001: …
       Rationale: …
@@ -88,10 +127,14 @@ Use compact plain prose or bullets, whichever is clearer. Use one blank line aft
 
     ## Outcomes and Retrospective
 
-    Per accepted stage, record a short handoff as defined in PLANS.md Current instructions and history, with any remaining obligations later stages need.
+    For each accepted stage, write a short handoff with PLANS.md Current instructions and history.
+    Include remaining obligations necessary for remaining stages.
 
     - Stage 01: …
 
     ## Audit References
 
-    Direct file and ID/anchor pointers to superseded decisions, review records, and shipped evidence. Label history for audit or investigation. Record the preservation-check result when compacting the ROADMAP.
+    Give direct references to replaced decisions, review records, and delivered evidence.
+    Include the file and ID or anchor.
+    Identify history as material for audit or investigation.
+    When you make the ROADMAP shorter, write the preservation-check result here.

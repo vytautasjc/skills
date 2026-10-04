@@ -1,119 +1,193 @@
 # Plan Tasks
 
-An execution plan maps one responsibility delivered end-to-end to bounded implementation tasks. The lean parent PLAN, current task brief, and explicit repository references must make the work resumable without conversation history. Refer to source paths, tests, and canonical contracts instead of reproducing them.
+An execution plan divides one responsibility from start to end into tasks with clear implementation boundaries. The parent PLAN, current task brief, and repository references must support continuation without conversation history. Refer to source paths, tests, and canonical contracts.
 
 ## How to use this file
 
-Read this reference when creating, revising, validating, executing, or resuming a plan. The [plan-tasks flow](../SKILL.md#flow) owns task sequencing and approval gates. Use `PLAN-SKELETON.md` for the parent and `TASK-SKELETON.md` for the current execution brief when authoring or restructuring them. Inspect the source needed for the current phase; future tasks remain a map until their turn.
+To create, revise, validate, execute, or continue a plan, read this reference. Use the [plan-tasks flow](../SKILL.md#flow) for task sequence and approval gates. Load `PLAN-SKELETON.md` only to write or restructure the parent PLAN. Load `TASK-SKELETON.md` only to write or restructure a task brief.
+
+Examine the source necessary for the current phase. Keep future tasks as map entries until their turn.
 
 ## Current context and ownership
 
-Every agreed requirement, constraint, contract, acceptance condition, and consequential decision has one durable, identifiable canonical home. The current task includes or explicitly references every agreement governing it. Compaction changes retrieval and presentation; it never silently deletes, weakens, or overrides agreed meaning.
+A **canonical location** is the single source of truth for an agreement.
 
-- The PLAN owns the focused end-to-end outcome, ordered task map, acceptance coverage, shared implementation contracts, current decisions, and accepted handoffs needed later. Keep it lean; local detail belongs in the task or canonical repository references.
-- The task owns its outcome and scope, write-path ownership, local contracts, implementation steps, validation, and remaining work. Load only the PLAN, that task, and required repository references.
-- Promote any decision, discovery, or contract needed by another task to the parent or a canonical repository reference linked there. Leave a one-line pointer at the origin. Keep each meaning in one authoritative place.
+Give each agreed requirement, constraint, contract, acceptance condition, and important decision one permanent, identifiable canonical location. The current task includes or directly references each applicable agreement. A shorter document can change presentation and retrieval. It must keep agreed meaning unchanged.
 
-Sibling task files open only to investigate a changed or failing **contract**: promised interfaces, types, or outcomes another task relies on. A plan revision, new requirement, scope change, or described outcome failing may trigger this exception. Cross-task influence otherwise uses current contracts and accepted handoffs in the PLAN or canonical contracts linked there.
+- **PLAN:** keep the outcome, ordered task map, acceptance coverage, shared implementation contracts, current decisions, and accepted handoffs for future work. Keep local detail in the task or canonical repository references.
+- **Task:** keep its outcome, scope, write-path ownership, local contracts, implementation steps, validation, and remaining work. Load only the PLAN, current task, and necessary repository references.
+- **Shared knowledge:** keep information necessary for other tasks in the parent or a canonical repository reference. Add that reference to the parent. Leave a one-line reference at the original location. Keep each meaning in one canonical place.
 
-Define unfamiliar terms at their canonical scope or point to the necessary glossary entries. Name files with repository-relative paths and functions or modules precisely. Explain how the relevant parts connect only when that helps implementation. Required knowledge must be available from the current repository and explicit references; conversations and sibling task rationale are not dependencies.
+Open sibling task files only to investigate a changed or failing **contract**. A contract is a promised interface, type, or outcome that is necessary for a different task. A plan revision, new requirement, scope change, or failed outcome can cause this exception. For other effects across tasks, use current contracts and accepted handoffs in the PLAN or its linked references.
+
+Define each unfamiliar term at its canonical scope, or link its glossary entry. Use repository-relative file paths. Identify functions and modules accurately. Show connections only when they help implementation. Keep necessary knowledge in the current repository and explicit references. Keep conversations and sibling task reasons outside execution dependencies.
 
 ## Task map
 
-Map all tasks before detailing any. Each map entry gives an observable outcome, scope boundary, dependencies, governing agreements, and acceptance IDs. PLANs define stable acceptance IDs such as `A001`. Assign shared constraints to every applicable task. Define shared contracts before the Map gate only when they constrain decomposition. All agreed future outcomes, boundaries, dependencies, acceptance references, and constraints remain in the PLAN or its canonical references and task map; only future implementation detail is deferred.
+Map all tasks before you detail a task. Give each entry an observable outcome, scope boundary, dependencies, applicable agreements, and acceptance IDs. Write stable PLAN acceptance IDs, such as `A001`. Give shared constraints to each applicable task.
+
+Before the Map gate, write shared contracts only when they affect decomposition. Keep all agreed future outcomes, boundaries, dependencies, acceptance references, and constraints in the PLAN, task map, or canonical references. Prepare future implementation detail when its turn starts.
 
 ## Decomposition
 
-Task: One bounded implementation responsibility within a plan. It owns a clear implementation area and has focused validation. It does not need to deliver the complete user journey independently.
+A **task** has one implementation responsibility with a clear boundary. It owns a specified implementation area and focused validation. A task can cover only part of the full user journey.
 
-Before approving a task map:
+Before task map approval:
 
-- Split backend and frontend implementation into separate tasks. Split tasks containing independently verifiable implementation concerns, including distinct backend concerns where appropriate.
-- Define required shared contracts before dependent implementation begins. Map who establishes them and when they are approved.
-- Assign one owner to each shared file and integration change. Create shared-contract and integration tasks only when they require actual work; name their acceptance responsibilities.
-- Review oversized artifacts for duplicated content or scope that needs further splitting.
+- Divide backend and frontend implementation into separate tasks.
+- Separate implementation concerns that you can validate independently. Use this rule in backend work where applicable.
+- Write necessary shared contracts before dependent implementation starts. Map who establishes them and when they get approval.
+- Give one owner to each shared file and integration change.
+- Create shared-contract and integration tasks only when actual work is necessary. Identify their acceptance responsibilities.
+- Examine large documents for repeated content or scope that makes more tasks necessary.
 
-Allow a narrow exception only when splitting would leave an invalid intermediate state; record the reason and affected boundary. Sharing a feature, domain, application, or deadline is insufficient. A backend task may be accepted through HTTP behavior before the frontend exists; a frontend task may be accepted against controlled API responses.
+Let a narrow exception apply only when separation causes an invalid intermediate state. Write the reason and affected boundary. A shared feature, domain, application, or deadline does not justify the exception. The user can accept backend HTTP behavior before the frontend exists. The user can accept frontend behavior against controlled API responses.
 
-For example, Google authentication can have shared authentication contracts (if actual work), backend authentication and Sessions, frontend sign-in/Session state/logout, and integration (if actual work). Apply the independent-concern check within those example areas rather than treating the example as a fixed task count.
+For example, Google authentication can have these tasks:
 
-A prototype task states the unknown, runnable experiment, and adoption criteria. Migration tasks define validation of coexisting paths and safe retirement.
+- Shared authentication contracts, if actual work is necessary.
+- Backend authentication and Sessions.
+- Frontend sign-in, Session state, and logout.
+- Integration, if actual work is necessary.
+
+Use the independent-concern rule in each example area. Select the task count from the work.
+
+For a prototype task, write the unknown, executable experiment, and adoption criteria. For migration tasks, write validation of paths that coexist and conditions for safe retirement.
 
 ## Parallel execution
 
-Tasks may run concurrently only when their owned write paths do not overlap, their required contracts are approved, and neither depends on the other's unfinished implementation. Each agent receives only its task, governing agreements, required contracts, and relevant source context. Detail and approve that small set before starting; other tasks remain map entries. Record the set, each task's state, and the sole owner of shared files and integration in the PLAN. Serialize work if ownership cannot be made disjoint. Creating the set does not itself authorize delegation.
+Run tasks concurrently only when all three conditions hold:
+
+- Their write paths are separate.
+- Their necessary contracts have approval.
+- Neither task depends on the other's unfinished implementation.
+
+Give each agent only its task, applicable agreements, necessary contracts, and related source context. Detail the small concurrent set before execution. Get approval for that set. Keep other tasks as map entries.
+
+In the PLAN, write the set, each task's state, and the single owner of shared files and integration. Use sequential work if you cannot separate write ownership. Get explicit authorization before you give work to subagents. Concurrent-set approval does not authorize delegation.
 
 ## Compact execution briefs
 
-Use six sections: Outcome and scope; Owned paths and implementation area; Required contracts and dependencies; Implementation steps; Acceptance and validation; Current status and remaining work. Include exclusions where needed to prevent scope expansion. Include rationale only when it changes implementation or prevents a likely mistake. Local decisions and discoveries belong beside the contract or step they affect, rather than in separate mandatory logs.
+Use these six sections:
 
-Put setup, generation, and migration commands beside the steps they support. Validation procedures follow [Acceptance and evidence](#acceptance-and-evidence); Acceptance and validation references them and records expected and observed results without repeating commands. State each working directory relative to the repository root. Recovery instructions belong beside the risky step; spell out safe retry, backup, or rollback where necessary.
+1. Outcome and scope.
+2. Owned paths and implementation area.
+3. Required contracts and dependencies.
+4. Implementation steps.
+5. Acceptance and validation.
+6. Current status and remaining work.
+
+Write exclusions when necessary to control scope. Include reasons only when they change implementation or prevent a possible mistake. Keep local decisions and findings with the affected contract or step.
+
+Put setup, generation, and migration commands with their steps. Use [Acceptance and evidence](#acceptance-and-evidence) for validation procedures. In Acceptance and validation, refer to those procedures. Write expected and observed results there. Keep commands at their canonical location.
+
+Write each working directory relative to the repository root. Put recovery instructions with the step with risk. Where necessary, write safe retry, backup, or rollback procedures.
 
 ### Task-size check
 
-Use roughly 600–1,200 words for a parent PLAN as a soft routing target; excess prompts a review of duplication, independent concerns, and current versus historical content.
+Use approximately 600–1,200 words as a flexible target for a parent PLAN. Above that target, examine repeated content, independent concerns, and current versus historical content.
 
-Use 500–1,000 words as a soft target for an active task, excluding necessary protocol examples. These are starting limits, not measured optimums; a complete smaller brief is sufficient. Above the target, remove duplicated requirements and historical material, then reference canonical source contracts. If independently verifiable implementation concerns remain, split them into focused tasks.
+Use 500–1,000 words as a flexible target for an active task. Exclude necessary protocol examples from this count. These targets are starting points. They are not measured optimum sizes. A full shorter brief is sufficient.
 
-Above roughly 1,500 words, perform a scope review before the Plan gate or the next implementation step. Record a short conclusion in Current status and remaining work: reduced size, proposed implementation split, or why one coherent outcome needs the remaining detail. A split revises the task map and requires Map approval; coherent complexity may justify exceeding the target. Size targets trigger scope review; they must never justify dropping requirements or hiding necessary detail in another mandatory document. Run the preservation check below through every reduction.
+Above the target, remove repeated requirements and historical material from active context. Then refer to canonical source contracts. Separate any remaining implementation concerns that you can validate independently.
+
+Above approximately 1,500 words, examine scope before the Plan gate or next implementation step. Write a short conclusion in Current status and remaining work. Write the reduced size, proposed task split, or reason the remaining detail is necessary for one outcome. A task split changes the map and makes Map approval necessary. Necessary detail for one coherent outcome can justify a larger task.
+
+Use size targets to trigger scope review. Keep all requirements and necessary detail available. A target does not justify a new mandatory document that hides necessary detail. Use the preservation check through each reduction.
 
 ## Acceptance and evidence
 
-Every plan delivers demonstrable behavior. Define acceptance with inputs, actions, and observable results, including relevant error and recovery paths. Internal changes need a runnable scenario or behavioral tests that prove their effect; compilation alone is insufficient.
+Each plan delivers behavior that you can demonstrate. Write acceptance through inputs, actions, and observable results. Include applicable error and recovery paths. For internal changes, provide an executable scenario or behavioral tests that prove their effect. Compilation alone is insufficient.
 
-Task validation proves its boundary: HTTP behavior for backend work, UI behavior against controlled API responses for frontend work, and the owned assembly boundary for integration work. Assign the plan's assembled-behavior validation and cross-task checks to an explicit task; its Result gate reviews that evidence.
+Validate each task's boundary:
 
-Agree test seams at the Plan gate. During implementation use TDD: one behavior, a failing test, then the minimum implementation to pass it; a bug starts with a regression test. Use exact project commands and explain expected results. Inspect repository scripts instead of caching unrelated toolchain instructions.
+- Backend: HTTP behavior.
+- Frontend: UI behavior against controlled API responses.
+- Integration: the assembly boundary owned by the task.
 
-Give validation procedures stable IDs or named anchors. Retain their exact commands, repository-relative working directories, required setup, and expected results in Implementation steps after completion, or in a directly referenced canonical validation record. When compacting completed edit steps, update evidence pointers to the retained procedures. Each retained result must resolve directly to the procedure used to obtain it.
+Give assembled plan behavior and checks across tasks to an explicit task. Examine that evidence at its Result gate.
 
-Record the latest relevant validation against each acceptance ID: procedure reference, observed result, date, and tested commit or description of the uncommitted working tree. For incremental checks on unchanged behavior, retain the evidence still applicable to the current result. Mark invalidated evidence and the required rerun as remaining work; earlier success never proves revised behavior by itself. Keep short output or link durable evidence instead of pasting full logs.
+Agree test seams at the Plan gate. During implementation, use TDD for one behavior at a time. First, write a failing test. Then write the minimum implementation that makes it pass. For a bug, start with a regression test. Use full project commands. Explain expected results. Examine repository scripts for tool instructions.
 
-Result acceptance, rather than finishing implementation or passing tests, completes the task. The plan is complete when every task result is accepted and no planned work remains. Preserve shipped acceptance IDs and evidence references even when implementation instructions are retired.
+Give validation procedures stable IDs or named anchors. After completion, keep their full commands, repository-relative working directories, necessary setup, and expected results. Keep them in Implementation steps or a directly referenced canonical validation record.
+
+When you make completed edit steps shorter, update evidence references to the kept procedures. Give each kept result a direct reference to the procedure that produced it.
+
+For each acceptance ID, write the latest applicable validation:
+
+- Procedure reference.
+- Observed result.
+- Date.
+- Tested commit or description of uncommitted changes.
+
+For incremental checks on unchanged behavior, keep evidence that still applies to the current result. Identify invalid evidence. Write necessary reruns as remaining work. Earlier success alone does not prove revised behavior. Keep short output or link permanent evidence.
+
+Complete a task only after result acceptance. Complete the plan only after acceptance of each task result and completion of all planned work. Keep delivered acceptance IDs and evidence references after you retire implementation instructions.
 
 ## Current instructions and history
 
-Active artifacts describe current approved work. Keep agreed behavior and constraints in the PLAN or canonical agreements referenced there. Keep implementation decisions at the narrowest consuming scope with stable IDs or named anchors; dependent tasks link to them. Retain unresolved questions, unfinished obligations, and decisions still governing future work as active, even when the current task does not load them.
+Active documents describe current approved work. Keep agreed behavior and constraints in the PLAN or its canonical agreement references. Keep implementation decisions at the narrowest scope that uses them. Give those decisions stable IDs or named anchors. Add references to those decisions in dependent tasks.
 
-An old decision leaves default execution context only after its approved replacement is explicit. Retain the earlier decision and rationale in a directly linked history record, marked `Superseded`, with its replacement pointer, reason for change, approval record, and affected task contracts and acceptance evidence. A single archive file may hold named records; load only the relevant record when needed to understand a governing decision or investigate a problem. Git history preserves ordinary edits, but is not the canonical home for agreed decisions. Superseded verification rounds and completed review follow-ups may share that history record; preserve shipped evidence references and mark which evidence remains applicable.
+Keep unresolved questions, unfinished obligations, and decisions that control future work active. This rule also applies when the current task does not load them.
 
-Before compacting a legacy task, reconcile approved changes, unresolved review work, and evidence applicability. For a Session changed from PostgreSQL to Redis, the active contract retains expiry, rotation, failure behavior, and accepted re-login after data loss. It links directly to the superseded PostgreSQL decision, change rationale, approval, affected task contracts, and evidence. A dependent Project ownership task retrieves the current Session contract; earlier rationale is directly retrievable when needed.
+Remove an old decision from default execution context only after its approved replacement is explicit. Keep the earlier decision and reason in a directly linked history record. Identify it as `Superseded`. Include its replacement reference, change reason, approval record, affected task contracts, and acceptance evidence.
 
-An accepted result produces a short parent handoff containing contracts and outcomes later work needs, with canonical paths or symbols and evidence pointers. Recommend a fresh conversation for the next task; file isolation cannot remove previous work already loaded into a conversation. Keep general retrospectives outside execution context unless a lesson still constrains work; consequential decisions always retain identifiable records.
+One archive file can hold named records. Load only the necessary record to understand a current decision or investigate a problem. Git history keeps ordinary edits. Keep agreed decisions in identifiable, canonical records.
+
+You can keep replaced verification rounds and completed review changes in the same history record. Keep delivered evidence references. Identify which evidence still applies.
+
+Before you make an earlier task shorter, reconcile approved changes, open review work, and evidence applicability. For example, a Session can change from PostgreSQL to Redis. Its active contract keeps expiry, rotation, failure behavior, and accepted re-login after data loss. Refer directly to the replaced PostgreSQL decision, change reason, approval, affected task contracts, and evidence. A dependent Project ownership task reads the current Session contract. Keep earlier reasons directly available when needed.
+
+For an accepted result, write a short parent handoff. Include contracts and outcomes necessary for future work, with canonical paths or symbols and evidence references. Recommend a new conversation for the next task. File isolation cannot remove work already loaded in a conversation.
+
+Keep general retrospectives out of execution context unless a lesson still controls work. Keep identifiable records for important decisions.
 
 ### Preservation check
 
-Before compaction, inventory every agreed item in the affected artifacts, including future-work agreements. After restructuring, verify that:
+Before you make documents shorter, list each agreed item in the affected documents. Include agreements for future work. After restructuring, make sure all these conditions hold:
 
-- Every requirement, constraint, contract, acceptance condition, and consequential decision still has one identifiable canonical location; its meaning is preserved.
-- Every moved item has a direct reference that resolves to the file and ID or anchor. The current task includes or references every governing agreement without requiring a history scan.
-- Every superseded decision has an explicit approved replacement and a linked record retaining rationale, approval, and affected contracts and evidence.
-- The task map and dependent tasks point to current contracts. Inspect sibling contract pointers only under the contract-change exception; use the parent map to audit coverage.
-- All unresolved questions, unfinished obligations, future constraints, acceptance IDs, and shipped evidence references remain accounted for; mark invalidated evidence and required reruns explicitly.
-- Every retained validation result resolves to its reproducible procedure as defined in Acceptance and evidence, including after completed edit steps are removed.
+- Each requirement, constraint, contract, acceptance condition, and important decision has one identifiable, canonical location. Its meaning stays unchanged.
+- Each moved item has a direct reference to its file and ID or anchor. The current task includes or references each applicable agreement. It has no dependency on a history search.
+- Each replaced decision has an explicit approved replacement. Its linked history record keeps reasons, approval, affected contracts, and evidence.
+- The task map and dependent tasks refer to current contracts. Examine sibling contract references only for the contract-change exception. Use the parent map to audit coverage.
+- All open questions, unfinished obligations, future constraints, acceptance IDs, and delivered evidence references remain available. Explicitly identify invalid evidence and necessary reruns.
+- Each kept validation result links to its reproducible procedure with Acceptance and evidence. This rule is applicable after removal of completed edit steps.
 
-Record a short check result with any gaps in the artifact's current status or audit section. Compaction is complete only when every item is accounted for and references resolve. Gaps stay active until reconciled; document editing never substitutes for semantic approval.
+Write a short check result and all gaps in the document's current status or audit section. Complete the reduction only when each item remains available and each reference reaches its target. Keep gaps active until resolved. Get semantic approval for changes to meaning.
 
 ## Resume state
 
-Near the top of the PLAN record `Current task` (or approved concurrent set), `State`, and `Remaining`. Record each mapped task's explicit state as well as its checkbox. The task repeats its identity and state as a synchronized view, with granular remaining work in its final section. Update both at every phase transition and before handing off. Checkboxes track accepted completion; the explicit state selects the next action.
+Near the PLAN top, write `Current task`, `State`, and `Remaining`. `Current task` can identify an approved concurrent set. Write each mapped task's state as well as its checkbox.
+
+Write task identity and state in the task file again. Keep these fields the same as in the PLAN. Write detailed remaining work in the task's final section. Update the two documents at each phase change and before handoff.
+
+Checkboxes show accepted completion. The explicit state selects the next action.
 
 | State | Next action |
 | --- | --- |
-| `awaiting-map-review` | Wait for task-map approval. |
-| `ready-to-detail` | Detail the named task when authorized to continue. |
-| `detailing` | Finish its execution brief and scope check. |
-| `awaiting-plan-review` | Wait for this task's plan approval. |
+| `awaiting-map-review` | Wait for task map approval. |
+| `ready-to-detail` | Detail the named task when the user authorizes continuation. |
+| `detailing` | Complete the execution brief and scope check. |
+| `awaiting-plan-review` | Wait for task plan approval. |
 | `implementing` | Continue approved implementation and validation. |
 | `awaiting-result-review` | Wait for acceptance or requested revision. |
-| `reopened` | Address recorded review work; material design changes return to the Plan gate. |
-| `accepted` | Task boundary accepted; publish its handoff and select remaining work. |
-| `complete` | No task work remains; all results are accepted. |
+| `reopened` | Complete recorded review work. For important design changes, go to the Plan gate again. |
+| `accepted` | The task boundary has acceptance. Write its handoff. Select remaining work. |
+| `complete` | All results have acceptance. No task work is unfinished. |
 
-Record approval scope and any follow-up conditions compactly in current status so resume does not reconstruct them from chat. Follow the flow's transitions; `complete` requires every task result accepted, no planned work remaining, and `Current task: none`.
+Write approval scope and follow-up conditions briefly in current status. Make continuation possible without chat history. Use the flow's state changes. For state `complete`, get acceptance of each task result. Complete all planned work. Set `Current task: none`.
 
 ## Formatting
 
-Use plain Markdown with one blank line after headings. When presenting a whole plan in chat, use one `md` fence and indented examples inside it; files omit that envelope. Use the skeleton's sections, omit optional sections without useful content, and add no placeholder prose. Checklists track progress in the PLAN and remaining work in the task. Tables are useful for coverage or state mappings when clearer than prose.
+Use [ste-writing-skill](../../ste-writing-skill/SKILL.md) for language guidance and the review before delivery.
+Apply it to PLANs, task briefs, handoffs, history records, and supporting planning documents.
 
-All paths in planning artifacts, including commands, working directories, examples, logs, and evidence, are relative to the repository root. Treat artifacts as public: include no secrets. Use the current Git username where an author is needed.
+Use plain Markdown. Add one blank line after each heading. For a complete plan in chat, use one `md` code fence. Indent examples inside that fence. Do not use the outer fence in files.
+
+Use the required skeleton sections. Omit optional sections that have no useful content. Replace placeholder text with actual content.
+
+Use checklists for PLAN progress and remaining work. Use tables for coverage or state mappings when a table is clearer than prose.
+
+Use repository-root-relative paths for commands, working directories, examples, logs, evidence, and other planning content.
+
+Treat all documents as public. Do not include secrets. If an author is required, use the current Git username.

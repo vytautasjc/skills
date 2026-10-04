@@ -12,7 +12,7 @@ Checks whether a repository has `senior` and its phase skills installed, reports
 ### Installation
 
 ```sh
-npx skills add vytautasjc/skills --skill setup-senior-skill
+npx skills add vytautasjc/skills --skill ste-writing-skill setup-senior-skill
 ```
 
 ## [plan-tasks](./personal/plan-tasks/SKILL.md)
@@ -24,7 +24,7 @@ Approve the task map, then detail, approve, implement, and review one task befor
 ### Installation
 
 ```sh
-npx skills add vytautasjc/skills --skill plan-tasks
+npx skills add vytautasjc/skills --skill ste-writing-skill plan-tasks
 ```
 
 ### Example
@@ -77,7 +77,7 @@ The SPEC retains the complete agreed outcome, and the ROADMAP maps it to small s
 ### Installation
 
 ```sh
-npx skills add vytautasjc/skills --skill plan-tasks staged-plan-tasks
+npx skills add vytautasjc/skills --skill ste-writing-skill plan-tasks staged-plan-tasks
 ```
 
 ### Example
@@ -145,9 +145,25 @@ docs/plans/api-request-limits
 ```
 </details>
 
+## [ste-writing-skill](./personal/ste-writing-skill/SKILL.md)
+
+Use this skill to write and review text in ASD-STE100 Simplified Technical English.
+It applies to explanations, documentation, comments, and user-facing text.
+It links to the official standard for rules and vocabulary lookups.
+Keep code identifiers, API names, commands, paths, and state values unchanged.
+Keep error messages, quoted text, and established technical terms unchanged.
+
+### Installation
+
+```sh
+npx skills add vytautasjc/skills --skill ste-writing-skill
+```
+
 ## [senior](./personal/senior/SKILL.md)
 
 Senior is a routing skill that is build on top of [plan-tasks](#plan-tasks), [staged-plan-tasks](#staged-plan-tasks), and third party skills.
+
+Use [ste-writing-skill](#ste-writing-skill) for writing in every phase.
 
 It can be used for planning, implementation, code review. And it is made to follow plans made using the skills mentioned before.
 
@@ -159,7 +175,7 @@ Keep every governing agreement in a durable, identifiable canonical home. Compac
 
 With dependency snapshots:
 ```sh
-npx skills add vytautasjc/skills --skill plan-tasks staged-plan-tasks tdd ponytail grilling domain-modeling senior
+npx skills add vytautasjc/skills --skill ste-writing-skill plan-tasks staged-plan-tasks tdd ponytail grilling domain-modeling senior
 ```
 
 With newest dependency versions:
@@ -168,7 +184,7 @@ npx skills add mattpocock/skills --skill tdd grilling domain-modeling
 
 npx skills add dietrichgebert/ponytail --skill ponytail
 
-npx skills add vytautasjc/skills --skill plan-tasks staged-plan-tasks senior
+npx skills add vytautasjc/skills --skill ste-writing-skill plan-tasks staged-plan-tasks senior
 ```
 
 ### Example

@@ -1,63 +1,71 @@
 ---
 name: senior
-description: Route non-trivial work by phase. Use when planning, implementing, reviewing, or resuming a change, changing domain meaning, or when another skill needs the repo's phase-to-skill wiring.
+description: Select skills for each phase of complex work. Use to plan, implement, review, or continue a change. Also use for changes to domain meaning. Use when another skill needs the repository's phase-to-skill rules.
 ---
 
 # Senior
 
-Workflow router. Match the work to its phase and run that phase's skills; each phase is a **gate**, not a suggestion — the phase is not done until its gate holds.
+Select the skills for the current phase. Use each selected skill. Each phase has a **gate**: a condition that must hold before the phase is completed.
 
-Repository `AGENTS.md` files invoke this workflow through a short `senior` pointer. Keep reusable workflow rules here and in the routed skills; repository guidance owns only repository-specific context and overrides.
+Repository `AGENTS.md` files refer to this workflow through a short `senior` reference. Keep shared workflow rules here and in the selected skills. Keep repository context and overrides in repository guidance.
 
 ## Phase loading
 
-Load every matching row: the governing planning skills remain required during task execution and result review, alongside the phase skills. Load references at their stated triggers. A missing skill blocks only the work requiring it; report the skill and affected phase.
+Load the skills from each applicable row. Keep the planning skills active during task execution and result review. Load references when their stated conditions apply.
 
-| Phase or trigger | Load |
+If a skill is missing, stop only the work for which it is necessary. Identify the missing skill and affected phase.
+
+| Phase or condition | Skills to load |
 | --- | --- |
-| Plan one responsibility delivered end-to-end | `plan-tasks` |
-| Map multiple responsibilities to stages | `staged-plan-tasks`; `plan-tasks` when decomposing the current stage |
-| Execute, review results, or resume an existing PLAN or ROADMAP | `plan-tasks`; also `staged-plan-tasks` when governed by a ROADMAP |
+| Write explanations, documentation, comments, or user-facing text | [ste-writing-skill](../ste-writing-skill/SKILL.md) |
+| Plan one responsibility from start to end | `plan-tasks` |
+| Divide multiple responsibilities into stages | `staged-plan-tasks`. Also load `plan-tasks` to divide the current stage into tasks. |
+| Execute, review results, or continue an existing PLAN or ROADMAP | `plan-tasks`. Also load `staged-plan-tasks` if a ROADMAP controls the work. |
 | Implement | `ponytail` and `tdd` |
-| Review code | `ponytail` and `tdd`; its `tests.md` for test quality |
+| Review code | `ponytail` and `tdd`. Load the `tdd` reference `tests.md` for test quality. |
 | Change domain meaning or resolve conflicting terms | `domain-modeling` |
-| Resolve an unsettled consequential decision | `grilling`, unless instructed to work autonomously |
+| Resolve an open decision with important effects | `grilling`, unless the user instructs you to work independently. |
 
-On resume, load the governing planning skills before using the PLAN or ROADMAP's explicit state to select the phase. Continue the approved remaining work through that skill's resume procedure; recorded approvals persist. Replanning and grilling activate only for a material change or an unresolved decision. Read established vocabulary through its canonical references without activating domain modeling.
+To continue work, first load the applicable planning skills. Then use the PLAN or ROADMAP state to select the phase. Use the skill's resume procedure for the remaining approved work. Keep recorded approvals valid.
 
-## Communication
-
-Respond in ASD-STE100 Simplified Technical English. Never pad a simple answer to sound thorough. Be concise.
+Prepare a new plan or use `grilling` only for an important change or an open decision. Read established terms through their canonical references. Use `domain-modeling` only when the domain meaning changes or has conflicts.
 
 ## Plan
 
-Plans live under `docs/`. Follow the selected planning skill's flow and approval gates. Before Roadmap/Spec approval, read [Stage decomposition](../staged-plan-tasks/references/ROADMAPS.md#stage-decomposition) for boundaries, dependencies, and release prerequisites. Before task map approval, read [Decomposition](../plan-tasks/references/PLANS.md#decomposition) for task boundaries and ownership. Before concurrent work, apply [Parallel execution](../plan-tasks/references/PLANS.md#parallel-execution). Use `grilling` for unresolved decisions.
+Keep plans in `docs/`. Use the selected planning skill's procedure and approval gates.
 
-When recording or moving agreements, follow [Current context and ownership](../plan-tasks/references/PLANS.md#current-context-and-ownership); staged ownership is defined in [SPECS.md](../staged-plan-tasks/references/SPECS.md#canonical-ownership). Before compaction, run [Preservation check](../plan-tasks/references/PLANS.md#preservation-check).
+- Before Roadmap/Spec approval, read [Stage decomposition](../staged-plan-tasks/references/ROADMAPS.md#stage-decomposition).
+- Before task map approval, read [Decomposition](../plan-tasks/references/PLANS.md#decomposition).
+- Before concurrent work, use [Parallel execution](../plan-tasks/references/PLANS.md#parallel-execution).
+- For open decisions, use `grilling`.
+
+To write or move agreements, use [Current context and ownership](../plan-tasks/references/PLANS.md#current-context-and-ownership). For staged work, use [Canonical ownership](../staged-plan-tasks/references/SPECS.md#canonical-ownership). Before you make documents shorter, complete the [Preservation check](../plan-tasks/references/PLANS.md#preservation-check).
 
 ## Keep domain language sharp
 
-When domain meaning changes, use `domain-modeling` to build and challenge the ubiquitous language. Route resolved terms by where the feature lives:
+When domain meaning changes, use `domain-modeling` to prepare and examine the shared domain language. Keep agreed terms in the applicable location:
 
-- Standalone effort with no `CONTEXT.md` yet → hold terms in the PLAN's `Context and Contracts` section. When scaffolding creates a feature `CONTEXT.md`, move the definitions there without changing meaning, replace PLAN definitions with direct pointers, and update affected references through the preservation check.
-- Staged effort, including scaffolding → route terms through [SPECS.md Canonical ownership](../staged-plan-tasks/references/SPECS.md#canonical-ownership).
-- A relevant parent `CONTEXT.md` exists → record only broad terms shared by the parent and its siblings there; keep promised feature meaning in the governing PLAN or SPEC.
+- **Standalone work without a feature `CONTEXT.md`:** keep terms in the PLAN's `Context and Contracts` section. When scaffolding creates `CONTEXT.md`, move the definitions there. Keep their meaning unchanged. Replace the PLAN definitions with direct references. Update affected references through the preservation check.
+- **Staged work, including scaffolding:** use [Canonical ownership](../staged-plan-tasks/references/SPECS.md#canonical-ownership).
+- **Work with an applicable parent `CONTEXT.md`:** keep broad terms shared by the parent and its siblings there. Keep promised feature meaning in the applicable PLAN or SPEC.
 
 ## Implement
 
-Not done until **both** gates hold:
+Complete implementation only when the two conditions hold:
 
-- Lazy pass — `ponytail` skill: the simplest thing that works, no speculative code.
-- Test-first cycle — `tdd` skill: red → green per behavior, regression test first for a bug.
+- **Lazy pass, `ponytail`:** use the simplest solution that works. Add code only for current needs.
+- **Test-first cycle, `tdd`:** write a failing test for each behavior. Then make that test pass. For a bug, start with a regression test.
 
 ## Code Review
 
-Treat every review comment as a proposal to evaluate, not an instruction to apply. Check every comment against the requirements, code, tests, and the rest of the review. When a different solution is materially better, challenge the comment with evidence, explain the trade-off, and recommend the concrete alternative.
+Examine each review comment as a proposal. Compare each comment with the requirements, code, tests, and other comments. If a different solution is much better, give evidence for it. Show the trade-off. Recommend the specified alternative.
 
-Reconcile the complete set of comments before changing code. For each contradiction, name the conflicting comments and their incompatible outcomes, recommend which one should govern, then use the `grilling` skill to ask the user which to apply. Wait for that decision before implementing either outcome.
+Review all comments together before you change code. For each contradiction, identify the conflicting comments and incompatible results. Recommend which comment to use. Use `grilling` to get the user's decision about which result to use. Wait for that decision before you implement either result.
 
-Unless specifically instructed to work autonomously, also use `grilling` when review questions or comments leave scope, design, or intended behavior unsettled. Prefix every grilling question with `Review comment:` followed by a short quote and its file/line or comment identifier when available. Three required lenses on the diff:
+Unless the user instructs you to work independently, use `grilling` for open review decisions about scope, design, or intended behavior. Start each question with `Review comment:`. Add a short quotation and the file/line or comment identifier, if available.
 
-- Over-engineering — `ponytail` skill.
-- Test quality — `tdd` skill, judged against the good/bad examples in its `tests.md`.
-- Shared understanding — activate `grilling` only for outstanding decisions.
+Examine the diff for all three areas:
+
+- Unnecessary complexity: use `ponytail`.
+- Test quality: use `tdd` and the good and bad examples in its `tests.md`.
+- Shared understanding: use `grilling` only for open decisions.
