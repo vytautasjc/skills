@@ -1,14 +1,13 @@
 ---
 name: plan-tasks
-description: Use when planning, reviewing, or executing any non-trivial coding work — multi-file features, risky refactors, migrations, architecture changes. Decomposes the effort into sequential child tasks, all planned before any are implemented (a later task's plan may depend on an earlier task's planned changes), with stop-and-review gates between decomposition, each task's plan, and each task's result. Not for small localized fixes unless explicitly requested.
+description: Plan, review, execute, or resume non-trivial coding work within one end-to-end responsibility. Map bounded implementation tasks, then detail and implement just in time with separate map, plan, and result approvals. Not for small localized fixes unless explicitly requested.
 ---
 
 Plan and deliver an effort as a sequence of independently-reviewable **tasks**. Use the shortest output that remains complete and unambiguous; add detail only when the work's complexity requires it.
 
 # Instructions
-1. Read [`PLANS.md`](references/PLANS.md) when creating, revising, validating, or executing an executable plan; it defines plan and task content, formatting, and method. Load the structural template for the artifact in hand: [`PLAN-SKELETON.md`](references/PLAN-SKELETON.md) when authoring or revising the parent plan, [`TASK-SKELETON.md`](references/TASK-SKELETON.md) when detailing or executing a task.
-2. Each task is detailed and executed one at a time, stopping at a gate for user review between each.
-3. Another task's file is loaded only when a **contract** changes (see Context isolation).
+
+Read [`PLANS.md`](references/PLANS.md) when creating, revising, validating, executing, or resuming a plan; it owns task definitions, decomposition, context ownership, preservation, concurrency, task size, and resume states. This skill owns the flow and gates below. Load [`PLAN-SKELETON.md`](references/PLAN-SKELETON.md) when authoring or restructuring the parent plan, or [`TASK-SKELETON.md`](references/TASK-SKELETON.md) when detailing or restructuring a task. Execution uses the approved brief and `PLANS.md`; templates are needed only when its structure must change.
 
 # Artifacts
 
@@ -17,44 +16,38 @@ Resolve the planning artifact layout from the nearest applicable `AGENTS.md` fir
     docs/plans/<plan-slug>/
       PLAN.md            # parent plan
       tasks/
-        01-config.md     # child tasks
-        02-prisma.md
-
-Write every filesystem path in every planning artifact relative to the repository root. This applies to PLANs, tasks, commands, working directories, examples, logs, and evidence; absolute paths never appear in these artifacts.
-
-Use the current git username as author where a section needs one. Treat these as public documents: no secrets.
+        01-backend.md    # bounded implementation tasks
+        02-frontend.md
 
 # Context isolation
 
-This is the point of the skill. Hold the minimum in context:
-
-- When working on a task, load the root `PLAN.md` and that task's file **only**. Never load a sibling task's file — task 02 must not pull task 01's rationale into context.
-- Cross-task influence flows **only through the parent plan's `Decision Log`**, never by reading a sibling task. When a task-local decision affects another task, *promote* it from the task file up to the `Decision Log`; the next task reads it there. This is how a later task's plan depends on an earlier task's planned changes without loading the earlier task.
-- *Promotion* covers any cross-cutting entry the same way — a `Decision Log` decision or a `Surprises & Discoveries` observation that outlives its task. The entry keeps one canonical home (the highest scope that consumes it); the originating task replaces it with a one-line pointer back. Interface signatures follow the same fan-out rule: shared/cross-stage contracts in the parent, single-consumer contracts in the source task. Never paste the same text in both.
-- Reopen a sibling task file only when a **contract** changes — a contract being a task's promised interfaces, types, or outcomes that another task relies on (e.g. a plan revision, new requirement, or scope change), or when a described outcome does not work as expected.
-- Keep the parent plan lean. Detail belongs in task files; the parent plan holds only what every task genuinely needs.
+Use [Current context and ownership](references/PLANS.md#current-context-and-ownership) to select task context and promote shared knowledge. Before compacting any artifact, follow [Current instructions and history](references/PLANS.md#current-instructions-and-history) and complete its preservation check.
 
 # Flow
 
-Decompose first, then detail every task, and finally execute the tasks one at a time. **All task files are detailed and Plan-gated before any source is touched**, because a later task's plan may depend on an earlier task's planned changes. Three gate types; at every gate, stop and wait for an explicit instruction to continue.
+Map the plan's tasks, then detail → approve → implement → review the next task just in time. Detail the next task using the accepted result of its predecessors. Three gate types; at every gate, stop and wait for explicit approval. Prior approvals persist on resume.
 
-1. **Decompose.** Inspect the repository, then write the `PLAN.md` following `PLANS.md`. Split into **vertical capabilities, never horizontal layers** — each task the smallest end-to-end slice that yields observable behavior, owning its own content across every layer it touches (see `PLANS.md`, `## Tasks`). Add each task as a title, a one-line scope, and an unchecked status box. Do not detail tasks yet.
+1. **Decompose.** Inspect the repository, then write `PLAN.md`. Complete [Decomposition](references/PLANS.md#decomposition) and the [Task map](references/PLANS.md#task-map) coverage before map approval. Future tasks remain map entries, without detailed task files. Set state to `awaiting-map-review`.
    → **Map gate.** Present the breakdown and wait for approval of the tasks and their order before detailing anything.
 
-2. **Detail every task.** Write `tasks/NN-slug.md` in full: task-specific details following `PLANS.md`, leave progress section empty. Touch no source files.
-   → **Plan gate.** Present the task plan. This is the moment to review or grill it. Wait for approval. Source is never modified before this gate passes. Once approved, move to detailing the next task on the list. Repeat until every task is detailed; only then begin execution.
+2. **Detail the current task.** After map approval, set state to `detailing` and write `tasks/NN-slug.md` as a compact execution brief, or detail only the small set proposed for concurrent work. Use accepted predecessor contracts and the current repository. Apply the task-size check in `PLANS.md`, agree the behavioral test seams, and record the remaining implementation work. Set state to `awaiting-plan-review`.
+   → **Plan gate.** Present this task's plan and any scope-review conclusion. Resolve unsettled decisions, then wait for approval before modifying source for this task. Approval moves it to `implementing`.
 
-3. **Execute every task, one at a time.** Execute the next unchecked task: make the changes and keep the task's live sections current as you go.
-   → **Result gate.** Report which task completed, what changed, surprises, and **validation evidence** — the exact commands or tests run and their output, proving the task works (not merely that code compiles). Update the task's progress section, the parent plan's progress section, and any decisions or observations — promote cross-cutting ones to the parent plan and leave a one-line pointer in the task, never a full duplicate. Name the next task. Wait before executing it.
+3. **Implement and review the current task.** Make only its approved changes, use TDD and behavioral acceptance, and keep its status and remaining work current. Record the latest relevant validation against each acceptance ID; include the exact commands, observed results, and tested revision. Set state to `awaiting-result-review`; its PLAN checkbox remains unchecked.
+   → **Result gate.** Report the completed behavior, material discoveries, and validation evidence. Wait for acceptance or revision. Requested follow-up moves it to `reopened`; after addressing it, return to this gate with current evidence. Acceptance sets its state to `accepted`, marks the task complete and its PLAN checkbox checked. Promote only the contracts and evidence pointers later tasks need into a short PLAN handoff. Set the next task to `ready-to-detail`. When all task results are accepted and no planned work remains, set the plan to `complete` and `Current task: none`. Recommend starting the next task in a fresh conversation, then repeat from step 2 when authorized to continue.
 
-Execute only the current task. Never cross a gate, expand scope, or detail the next task without an explicit instruction to continue. If scope or design changes materially mid-task, stop and revise the plan rather than pressing on.
+Execute only the approved current task or concurrent set. Never cross a gate, expand scope, or detail the next task without an explicit instruction to continue. If scope or design changes materially mid-task, stop and revise the plan rather than pressing on.
+
+# Parallel execution
+
+Before proposing or executing a concurrent set, apply [Parallel execution](references/PLANS.md#parallel-execution). Each task still passes its own Plan and Result gates.
 
 # Resuming
 
-Read the root `PLAN.md`; the first unchecked box in plan's progress is the next task. Open that one task file and continue from its progress. Read no other task files unless a **contract** changes (see Context isolation).
+Read the root `PLAN.md` and its `Current task`, `State`, and `Remaining` fields. Use the state definitions in `PLANS.md` to distinguish detailing, implementation, pending approval, and reopened result work. Open only the named task when its file exists, plus required references. An approval already recorded remains valid. If a legacy plan lacks state, reconcile its recorded approvals and current evidence, write the exact state, and ask only when the governing approval cannot be established; an unchecked box alone does not authorize implementation. Keep sibling files closed unless a contract changes.
 
 # Gate discipline
 
-A gate is a hard stop. At each one, state plainly which gate you are at and what you need approved. Do not bundle approvals — task list, each task's plan, and each task's result are separate sign-offs. Record assumptions and resolved questions in the appropriate decision log section (parent plan if cross-cutting, task if local) as they are settled, with rationale.
+A gate is a hard stop. State which gate is active and what needs approval. Task map, each task's plan, and each task's result are separate sign-offs. Record current assumptions and resolved decisions at their canonical scope, with rationale only when it changes implementation or prevents a likely mistake. If a change invalidates the approved map, revise it and return to the Map gate before further detail or implementation.
 
 Gate messages are concise: name the gate, summarize only the decisions, changes, risks, or evidence needed for review, and ask for the specific approval. Do not restate the artifact, narrate routine work, add generic preambles, or pad a simple answer. A one-line gate message is sufficient when no complexity needs explanation.

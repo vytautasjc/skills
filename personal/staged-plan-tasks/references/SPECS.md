@@ -1,6 +1,6 @@
 # Effort Specifications
 
-This document defines the permanent `SPEC.md` artifact for one staged effort. Read it whenever you create, revise, review, or consume an effort SPEC. Delivery coordination is governed by [`ROADMAPS.md`](ROADMAPS.md). Just-in-time implementation planning follows the `plan-tasks` skill and its `PLANS.md` reference.
+This document defines the permanent `SPEC.md` artifact for one staged effort. Read it when creating, revising, reviewing, or checking preservation of an effort SPEC. During execution retrieve only the current task's assigned entries and their governing closure; loading one entry does not require loading the whole SPEC or its history. Delivery coordination is governed by [`ROADMAPS.md`](ROADMAPS.md). Just-in-time implementation planning follows the `plan-tasks` skill and its `PLANS.md` reference.
 
 ## What a SPEC is
 
@@ -8,15 +8,17 @@ The SPEC is the durable source of truth for the complete agreed **what** across 
 
 A complete SPEC lets a context-blind agent understand any stage's assigned outcome without reopening a transcript, chat, scratch document, or sibling stage tree. It states the overall outcome, scope, domain language, requirements, contracts, invariants, acceptance scenarios, and unresolved product questions. It does not assign work to stages, decompose tasks, prescribe file edits, list commands, or predict implementation details.
 
+Use [PLANS.md](../../plan-tasks/references/PLANS.md#current-context-and-ownership) for general context ownership, decision history, and preservation. This reference adds staged ownership, ID traceability, and semantic amendment rules.
+
 ## Canonical ownership
 
 Keep each meaning in one authoritative place:
 
 - `SPEC.md` owns the complete agreed behavior, constraints, contracts, invariants, acceptance, domain meaning, and unresolved product questions across every stage.
-- `ROADMAP.md` owns delivery: stage boundaries and order, dependencies, SPEC-ID coverage, status, delivery decisions, and shipped outcomes needed later.
-- A stage's `PLAN.md` owns implementation strategy shared by that stage's tasks. A task file owns task-local implementation detail.
+- `ROADMAP.md` owns delivery: stage boundaries and order, dependencies, production release prerequisites, SPEC-ID coverage, status, delivery decisions and terms, and shipped outcomes needed later.
+- Stage PLANs and tasks retain their [PLANS.md ownership](../../plan-tasks/references/PLANS.md#current-context-and-ownership) for implementation decisions, terms, and mappings. Promote cross-stage delivery knowledge to the ROADMAP; proposed changes to agreed meaning enter the SPEC through the Spec amendment gate.
 
-Pointers may repeat stable IDs, but prose and rationale retain one canonical home. When an item's scope or delivery stage changes, update pointers rather than moving or copying its definition.
+Pointers may repeat stable IDs, but prose and rationale retain one canonical home. When an item's delivery stage changes, update pointers rather than moving or copying its definition. Effort-specific domain definitions remain in the SPEC after scaffolding; feature `CONTEXT.md` files index them through direct references. Existing repository-wide terms may be referenced from their canonical glossary.
 
 ## Stable IDs and traceability
 
@@ -30,9 +32,13 @@ Use IDs that survive delivery re-planning:
 
 Every normative ID (`R`, `C`, or `I`) must be covered by one or more `A` IDs. When direct behavioral observation is impossible, the acceptance entry names the exact inspection, analysis, or test evidence that proves the obligation. Acceptance entries cite every normative ID they cover.
 
-IDs remain stable when wording is clarified without changing meaning. When meaning changes after approval, mark the old entry `Retired`, point it to its replacement when one exists, and add a new ID; never reuse an identifier. This lets a requirement move between stages without changing identity and preserves the meaning of evidence produced by shipped stages.
+IDs remain stable when wording is clarified without changing meaning. When meaning changes after approval, mark the old entry `Retired`, point it to its replacement when one exists, and add a new ID; never reuse an identifier. Apply [Current instructions and history](../../plan-tasks/references/PLANS.md#current-instructions-and-history) to the prior meaning and decision record. The SPEC may retain only the retired ID, replacement, and history pointer in default context. This lets a requirement move between stages without changing identity and preserves the meaning of evidence produced by shipped stages.
 
-The ROADMAP assigns normative, acceptance, and relevant open-question IDs to stages. A stage PLAN assigns its normative and acceptance coverage to tasks, and task results record evidence against acceptance IDs. Open-question IDs route unresolved decisions to every stage they could affect and are resolved before the earliest affected Map gate. Repeating IDs along this chain is a pointer, not duplicated specification prose.
+The ROADMAP assigns normative, acceptance, and relevant open-question IDs to stages. A stage PLAN assigns its normative and acceptance coverage to tasks, including shared constraints in every applicable task, and task results record evidence against acceptance IDs.
+
+When an acceptance scenario spans stages, list its unchanged acceptance ID in every contributing stage's Coverage, identify each stage's observable portion, and name one final acceptance owner. Carry those portions into task coverage. Each contributing stage proves its assigned portion; the final owner proves the full scenario against the assembled result. Keep the full scenario canonical in the SPEC; coverage entries identify boundaries rather than copying scenario prose.
+
+Stage decomposition and acceptance retrieve complete stage coverage; task planning and execution retrieve task coverage, referenced contracts and invariants, and necessary glossary entries. Narrow retrieval preserves the full traceability map. Follow references transitively: required shared contracts, applicable invariants, necessary domain terms, acceptance portions, and consequential decisions. Each task names its complete governing set; a stage-wide coverage list alone is insufficient. Open-question IDs route unresolved decisions to every stage they could affect and are resolved before the earliest affected Map gate. Repeating IDs along this chain is a pointer, not duplicated specification prose.
 
 An open-question ID remains stable when answered. Mark the entry `Resolved`, record the answer and the normative or acceptance IDs it added or clarified, and preserve the original question. Because answering a product question changes or completes the agreed outcome, pass the resolution through the Spec amendment gate before affected planning or implementation continues.
 
@@ -60,15 +66,19 @@ The initial Roadmap/Spec gate approves both the agreement and its first delivery
 
 Shipped stage coverage and evidence stay fixed. A later semantic change adds new IDs for future delivery rather than rewriting what a shipped stage proved. Clarifications that preserve meaning may keep the existing ID, but the Revision Log must make the clarification and its rationale visible.
 
+## History and preservation
+
+Before compaction, follow [Current instructions and history](../../plan-tasks/references/PLANS.md#current-instructions-and-history) and complete its [Preservation check](../../plan-tasks/references/PLANS.md#preservation-check) across the affected artifacts. Also verify that every retired SPEC ID retains its replacement pointer when one exists, shipped coverage remains fixed, and semantic changes have passed the Spec amendment gate. The SPEC Revision Log indexes its history records by stable ID or named anchor and records the check result. ROADMAP checks belong in its Audit References; PLAN and task checks use their own status or audit sections.
+
 ## Formatting
 
-Use compact plain prose or bullets, whichever is clearer. Use two newlines after headings and correct list syntax. Write every path relative to the repository root. Define domain terms at first use. Treat the file as public: no secrets. Omit optional sections and placeholder text, but retain what the completeness bar requires. When the file's whole content is the SPEC, omit surrounding code fences.
+Use compact plain prose or bullets, whichever is clearer. Use one blank line after headings and correct list syntax. Write every path relative to the repository root. Define domain terms at first use. Treat the file as public: no secrets. Omit optional sections and placeholder text, but retain what the completeness bar requires. When the file's whole content is the SPEC, omit surrounding code fences.
 
 ## Template
 
     # <Effort name> Specification
 
-    Roadmap: ROADMAP.md
+    Roadmap: <repository-relative ROADMAP path>
     Method: <repository-relative path to SPECS.md, only when checked in>
 
     ## Purpose / Big Picture
@@ -127,10 +137,13 @@ Use compact plain prose or bullets, whichever is clearer. Use two newlines after
 
     ## Revision Log
 
-    Append every post-approval clarification or semantic amendment. Preserve prior entries.
+    Index every post-approval clarification or semantic amendment by a stable revision ID or named anchor. Apply PLANS.md Current instructions and history to superseded records. Record preservation-check results for compaction.
 
-    - Revision: …
+    - REV001: …
       Affected IDs: …
       Rationale: …
       Approval gate: Roadmap/Spec | Spec amendment
+      Approval record: <decision reference and date; pending until approved>
+      Affected contracts/evidence: <direct references and applicability>
+      History: <file and ID/anchor when superseded records exist; audit/investigation only>
       Date/Author: (2026-06-20 14:00Z) / <git username>

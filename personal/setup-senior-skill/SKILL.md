@@ -10,14 +10,14 @@ Audit the current repository only. Treat the [Vytautas skills README](https://gi
 ## Check the installation
 
 1. Resolve the repository root and find repository-local skills by the `name` in each `SKILL.md` frontmatter. Include hidden agent directories in the search and exclude `.git`. Do not count user-level or globally installed skills.
-2. Check for `senior` and its expected prerequisites: `plan-tasks`, `staged-plan-tasks`, `ponytail`, `domain-modeling`, `grilling`, and `tdd`.
-3. When `senior` is present, read its `Prerequisites` section and use that list instead if it differs. A skill is installed only when its `SKILL.md` is present in the repository.
+2. Check for `senior` and its phase skills: `plan-tasks`, `staged-plan-tasks`, `ponytail`, `domain-modeling`, `grilling`, and `tdd`.
+3. When `senior` is present, read its `Phase loading` table and use that routing instead if it differs (use `Prerequisites` for a legacy installation). A skill is installed only when its `SKILL.md` is present in the repository.
 
-If `senior` or any prerequisite is missing, list the missing skill names and ask the user to follow the README's installation instructions first. Stop before recommending an `AGENTS.md` change because the workflow is not ready to reference.
+If `senior` is missing, ask the user to follow the README's installation instructions before recommending guidance. If a phase skill is missing, list it and the affected phase; other installed phases remain usable. Recommend installing the missing skills from the README, and continue the guidance check for the installed router.
 
 ## Recommend repository guidance
 
-Once `senior` and every prerequisite are installed, inspect the root `AGENTS.md`. Recommend adding the following block verbatim; do not edit the file unless the user separately asks for the change:
+Once `senior` is installed, inspect the root `AGENTS.md`. Recommend adding the following block verbatim; do not edit the file unless the user separately asks for the change:
 
 ```markdown
 ## Engineering Workflow

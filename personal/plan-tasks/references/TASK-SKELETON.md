@@ -1,63 +1,39 @@
 # Task Skeleton
 
-Structural template for `tasks/NN-slug.md`. Follow [`PLANS.md`](PLANS.md). Keep required sections, but add no filler or placeholder prose; one sentence is enough when it fully communicates the point.
+Template for `tasks/NN-slug.md`. Follow [PLANS.md](PLANS.md), including decomposition, size review, preservation, and explicit state. Resumable without conversation history, using explicit references to governing agreements and repository sources. Use these six compact sections.
 
-    # Task NN — <slug>
+    # Task NN — <responsibility>
 
-    Living task: keep `Progress`, `Surprises & Discoveries`, `Decision Log`, and `Outcomes and Retrospective` current.
+    Current task: <NN-slug>
+    State: <task state from PLANS.md>
+    Remaining: <exact next action or approval>
+    Parent: <repository-relative PLAN path>
 
-    ## Purpose
+    ## Outcome and scope
 
-    State what becomes possible and how to observe it. Use one sentence when sufficient.
+    State the task's bounded result and exclusions needed to prevent scope expansion. Cite its governing agreement and acceptance IDs; name its portion of scenarios spanning tasks.
 
-    ## Context
+    ## Owned paths and implementation area
 
-    What this task needs that the parent plan does not already give: the specific files, types, and terms in play for this task. Name files by their complete repository-relative paths. Keep it to this task.
+    Name the sole owner and explicit write paths. State the backend, frontend, shared-contract, or integration boundary and who owns each shared file. Read dependencies do not grant write ownership. Record any invalid-intermediate-state exception and its reason.
 
-    ## Plan of Work
+    ## Required contracts and dependencies
 
-    Give the minimal sequence of edits. Name each file and location (function or module), the change, and only rationale that affects implementation.
+    Reference every governing agreement by repository path and stable ID, symbol, or anchor: applicable invariants and terms, parent decisions, required approved shared contracts, accepted handoffs, and relevant source. State predecessor outcomes and approval status. Keep local contracts here only when they have no other canonical home.
 
-    ## Concrete Steps
+    ## Implementation steps
 
-    State the exact commands to run and where to run them, expressing every working directory relative to the repository root. When a command generates output, show a short expected transcript so the reader can compare. This section must be updated as work proceeds.
+    Give minimal ordered work by file/module. Keep edit commands beside their steps, with repository-relative working directory and expected result. Define or directly reference validation procedures using PLANS.md Acceptance and evidence. Keep recovery instructions beside risky work. Compact completed edit instructions while retaining validation procedure definitions or their direct pointers.
 
-    ## Validation / Acceptance
+    ## Acceptance and validation
 
-    How to prove this solution works as behavior a human can verify — exact commands or tests with the working directory, and the output to expect. State the test that fails before and passes after. This is what you show at the result gate.
+    For each acceptance ID/portion, give the behavior, agreed test seam, stable procedure reference, latest result, date, and tested revision or uncommitted-tree description. Apply PLANS.md Acceptance and evidence to the task boundary. Mark invalid evidence and required reruns in remaining work.
 
-    ## Surprises & Discoveries
+    ## Current status and remaining work
 
-    Document unexpected behaviors, bugs, optimizations, or insights discovered during implementation. Provide concise evidence.
+    Record planning approval, result-review state, acceptance or reopening, unresolved obligations, and granular remaining work. Preserve scope-review and preservation-check conclusions; link history records as defined in PLANS.md Current instructions and history.
 
-    - Observation: …
-      Evidence: …
+    - [x] <completed work and evidence reference>.
+    - [ ] <remaining action, validation, or approval>.
 
-    ## Decision Log
-
-    Record every decision made while working on this task in the format:
-
-    - Decision: …
-      Rationale: …
-      Date/Author: (2025-10-01 13:00Z) / <git username>
-
-    ## Progress
-
-    Granular checklist for resuming this task mid-flight. Split a partially done item into done vs remaining. The root plan's `Progress` tracks coarse status; this tracks the work inside the task.
-
-    - [x] (2026-06-20 13:00Z) Example completed step.
-    - [ ] Example remaining step (completed: X; remaining: Y).
-
-    ## Interfaces and Dependencies
-
-    Include only dependencies and interfaces that constrain implementation. Name required libraries, modules, services, types, and signatures, with rationale only where the choice is non-obvious. Prefer stable names and paths such as `crate::module::function` or `package.submodule.Interface`. Example when useful:
-
-    In crates/foo/planner.rs, define:
-
-        pub trait Planner {
-            fn plan(&self, observed: &Observed) -> Vec<Action>;
-        }
-
-    ## Outcomes and Retrospective
-
-    Summarize outcomes, gaps, and lessons learned at completion. Compare the result against the original purpose.
+    On acceptance, reference the parent handoff.

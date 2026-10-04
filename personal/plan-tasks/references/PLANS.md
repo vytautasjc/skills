@@ -1,116 +1,119 @@
 # Plan Tasks
 
-This document describes the requirements for an execution plan, a design document that a coding agent can follow to deliver a working feature or system change. Treat the reader as a complete beginner to this repository: they have only the current working tree and the single execution plan file you provide. There is no memory of prior plans and no external context.
+An execution plan maps one responsibility delivered end-to-end to bounded implementation tasks. The lean parent PLAN, current task brief, and explicit repository references must make the work resumable without conversation history. Refer to source paths, tests, and canonical contracts instead of reproducing them.
 
 ## How to use this file
 
-When authoring an executable plan, follow this file _to the letter_. If it is not in your context, read it in full. Research source material thoroughly. Start from the relevant skeleton (`PLAN-SKELETON.md` or `TASK-SKELETON.md`) and populate only what the work requires.
+Read this reference when creating, revising, validating, executing, or resuming a plan. The [plan-tasks flow](../SKILL.md#flow) owns task sequencing and approval gates. Use `PLAN-SKELETON.md` for the parent and `TASK-SKELETON.md` for the current execution brief when authoring or restructuring them. Inspect the source needed for the current phase; future tasks remain a map until their turn.
 
-When discussing an executable plan, record decisions applicable to all child tasks in a log in the plan for posterity; it should be unambiguously clear why any change to the plan was made. These plans and child tasks are living documents, and it should always be possible to restart from _only_ the plan and its tasks and no other work.
+## Current context and ownership
 
-When researching a design with challenging requirements or significant unknowns, use tasks to implement proof of concepts, "toy implementations", etc., that allow validating whether the user's proposal is feasible. Read the source code of libraries by finding or acquiring them, research deeply, and include prototypes to guide a fuller implementation.
+Every agreed requirement, constraint, contract, acceptance condition, and consequential decision has one durable, identifiable canonical home. The current task includes or explicitly references every agreement governing it. Compaction changes retrieval and presentation; it never silently deletes, weakens, or overrides agreed meaning.
 
-## Concision
+- The PLAN owns the focused end-to-end outcome, ordered task map, acceptance coverage, shared implementation contracts, current decisions, and accepted handoffs needed later. Keep it lean; local detail belongs in the task or canonical repository references.
+- The task owns its outcome and scope, write-path ownership, local contracts, implementation steps, validation, and remaining work. Load only the PLAN, that task, and required repository references.
+- Promote any decision, discovery, or contract needed by another task to the parent or a canonical repository reference linked there. Leave a one-line pointer at the origin. Keep each meaning in one authoritative place.
 
-Write the shortest plan that is complete, executable, and unambiguous. Every sentence must supply an action, decision, rationale that affects implementation, necessary context, constraint, recovery instruction, or proof. Remove filler, generic introductions, repeated meaning, obvious advice, ornamental examples, and prose that merely announces a section. State a simple point once and briefly. Expand only where real complexity, risk, ambiguity, or unfamiliar repository context requires it.
+Sibling task files open only to investigate a changed or failing **contract**: promised interfaces, types, or outcomes another task relies on. A plan revision, new requirement, scope change, or described outcome failing may trigger this exception. Cross-task influence otherwise uses current contracts and accepted handoffs in the PLAN or canonical contracts linked there.
 
-Concision never permits missing requirements, hidden decisions, vague steps, or weak acceptance evidence. Preserve all information a context-blind agent needs, but prefer precise paths, symbols, commands, expected results, and stable pointers over explanatory padding. Do not repeat parent-plan content in a task or source material already available under the skill's context rules.
+Define unfamiliar terms at their canonical scope or point to the necessary glossary entries. Name files with repository-relative paths and functions or modules precisely. Explain how the relevant parts connect only when that helps implementation. Required knowledge must be available from the current repository and explicit references; conversations and sibling task rationale are not dependencies.
 
-## Requirements
+## Task map
 
-NON-NEGOTIABLE REQUIREMENTS:
+Map all tasks before detailing any. Each map entry gives an observable outcome, scope boundary, dependencies, governing agreements, and acceptance IDs. PLANs define stable acceptance IDs such as `A001`. Assign shared constraints to every applicable task. Define shared contracts before the Map gate only when they constrain decomposition. All agreed future outcomes, boundaries, dependencies, acceptance references, and constraints remain in the PLAN or its canonical references and task map; only future implementation detail is deferred.
 
-* Every Plan in combination with its child tasks must be fully self-contained. Self-contained means that in its current form it contains all knowledge and instructions needed for a novice to succeed.
-* Every Plan and Task is a living document. Contributors are required to revise it as progress is made, as discoveries occur, and as design decisions are finalized. Each revision must remain fully self-contained.
-* Every Plan must enable a complete novice to implement the feature end-to-end without prior knowledge of this repo.
-* Every Plan must produce a demonstrably working behavior, not merely code changes to "meet a definition".
-* Every Plan and Task must define every term of art in plain language or do not use it.
-* Every Plan holds what every child task needs. The defining property: working on a task loads the lean parent plan plus that one task file.
-* Every Task is defined in the same order they need to be done to achieve the plan's goal incrementally.
-* Every Task is a vertical slice of one capability, never a horizontal layer. It delivers observable behavior end-to-end — cutting through every layer that capability touches, whatever layers the system has — rather than completing one layer for capabilities that land later. The single exception is a deliberately content-free task that introduces a shared mechanism with no capability content (a connection, a runtime, a framework, a test harness). See `## Tasks`.
-* Every filesystem path in a Plan or Task is relative to the repository root. This includes paths in prose, commands, working directories, examples, transcripts, logs, and evidence.
+## Decomposition
 
-Purpose and intent come first. State as briefly as possible what becomes possible and how to observe it, then give the exact edits, commands, and expected results.
+Task: One bounded implementation responsibility within a plan. It owns a clear implementation area and has focused validation. It does not need to deliver the complete user journey independently.
 
-The agent executing your plan can list files, read files, search, run the project, and run tests. It knows no prior context. State each relied-on assumption once at the highest scope that needs it. Do not rely on external blogs or docs; embed required knowledge briefly. Reference a checked-in prior plan when needed; otherwise include only its relevant context.
+Before approving a task map:
+
+- Split backend and frontend implementation into separate tasks. Split tasks containing independently verifiable implementation concerns, including distinct backend concerns where appropriate.
+- Define required shared contracts before dependent implementation begins. Map who establishes them and when they are approved.
+- Assign one owner to each shared file and integration change. Create shared-contract and integration tasks only when they require actual work; name their acceptance responsibilities.
+- Review oversized artifacts for duplicated content or scope that needs further splitting.
+
+Allow a narrow exception only when splitting would leave an invalid intermediate state; record the reason and affected boundary. Sharing a feature, domain, application, or deadline is insufficient. A backend task may be accepted through HTTP behavior before the frontend exists; a frontend task may be accepted against controlled API responses.
+
+For example, Google authentication can have shared authentication contracts (if actual work), backend authentication and Sessions, frontend sign-in/Session state/logout, and integration (if actual work). Apply the independent-concern check within those example areas rather than treating the example as a fixed task count.
+
+A prototype task states the unknown, runnable experiment, and adoption criteria. Migration tasks define validation of coexisting paths and safe retirement.
+
+## Parallel execution
+
+Tasks may run concurrently only when their owned write paths do not overlap, their required contracts are approved, and neither depends on the other's unfinished implementation. Each agent receives only its task, governing agreements, required contracts, and relevant source context. Detail and approve that small set before starting; other tasks remain map entries. Record the set, each task's state, and the sole owner of shared files and integration in the PLAN. Serialize work if ownership cannot be made disjoint. Creating the set does not itself authorize delegation.
+
+## Compact execution briefs
+
+Use six sections: Outcome and scope; Owned paths and implementation area; Required contracts and dependencies; Implementation steps; Acceptance and validation; Current status and remaining work. Include exclusions where needed to prevent scope expansion. Include rationale only when it changes implementation or prevents a likely mistake. Local decisions and discoveries belong beside the contract or step they affect, rather than in separate mandatory logs.
+
+Put setup, generation, and migration commands beside the steps they support. Validation procedures follow [Acceptance and evidence](#acceptance-and-evidence); Acceptance and validation references them and records expected and observed results without repeating commands. State each working directory relative to the repository root. Recovery instructions belong beside the risky step; spell out safe retry, backup, or rollback where necessary.
+
+### Task-size check
+
+Use roughly 600–1,200 words for a parent PLAN as a soft routing target; excess prompts a review of duplication, independent concerns, and current versus historical content.
+
+Use 500–1,000 words as a soft target for an active task, excluding necessary protocol examples. These are starting limits, not measured optimums; a complete smaller brief is sufficient. Above the target, remove duplicated requirements and historical material, then reference canonical source contracts. If independently verifiable implementation concerns remain, split them into focused tasks.
+
+Above roughly 1,500 words, perform a scope review before the Plan gate or the next implementation step. Record a short conclusion in Current status and remaining work: reduced size, proposed implementation split, or why one coherent outcome needs the remaining detail. A split revises the task map and requires Map approval; coherent complexity may justify exceeding the target. Size targets trigger scope review; they must never justify dropping requirements or hiding necessary detail in another mandatory document. Run the preservation check below through every reduction.
+
+## Acceptance and evidence
+
+Every plan delivers demonstrable behavior. Define acceptance with inputs, actions, and observable results, including relevant error and recovery paths. Internal changes need a runnable scenario or behavioral tests that prove their effect; compilation alone is insufficient.
+
+Task validation proves its boundary: HTTP behavior for backend work, UI behavior against controlled API responses for frontend work, and the owned assembly boundary for integration work. Assign the plan's assembled-behavior validation and cross-task checks to an explicit task; its Result gate reviews that evidence.
+
+Agree test seams at the Plan gate. During implementation use TDD: one behavior, a failing test, then the minimum implementation to pass it; a bug starts with a regression test. Use exact project commands and explain expected results. Inspect repository scripts instead of caching unrelated toolchain instructions.
+
+Give validation procedures stable IDs or named anchors. Retain their exact commands, repository-relative working directories, required setup, and expected results in Implementation steps after completion, or in a directly referenced canonical validation record. When compacting completed edit steps, update evidence pointers to the retained procedures. Each retained result must resolve directly to the procedure used to obtain it.
+
+Record the latest relevant validation against each acceptance ID: procedure reference, observed result, date, and tested commit or description of the uncommitted working tree. For incremental checks on unchanged behavior, retain the evidence still applicable to the current result. Mark invalidated evidence and the required rerun as remaining work; earlier success never proves revised behavior by itself. Keep short output or link durable evidence instead of pasting full logs.
+
+Result acceptance, rather than finishing implementation or passing tests, completes the task. The plan is complete when every task result is accepted and no planned work remains. Preserve shipped acceptance IDs and evidence references even when implementation instructions are retired.
+
+## Current instructions and history
+
+Active artifacts describe current approved work. Keep agreed behavior and constraints in the PLAN or canonical agreements referenced there. Keep implementation decisions at the narrowest consuming scope with stable IDs or named anchors; dependent tasks link to them. Retain unresolved questions, unfinished obligations, and decisions still governing future work as active, even when the current task does not load them.
+
+An old decision leaves default execution context only after its approved replacement is explicit. Retain the earlier decision and rationale in a directly linked history record, marked `Superseded`, with its replacement pointer, reason for change, approval record, and affected task contracts and acceptance evidence. A single archive file may hold named records; load only the relevant record when needed to understand a governing decision or investigate a problem. Git history preserves ordinary edits, but is not the canonical home for agreed decisions. Superseded verification rounds and completed review follow-ups may share that history record; preserve shipped evidence references and mark which evidence remains applicable.
+
+Before compacting a legacy task, reconcile approved changes, unresolved review work, and evidence applicability. For a Session changed from PostgreSQL to Redis, the active contract retains expiry, rotation, failure behavior, and accepted re-login after data loss. It links directly to the superseded PostgreSQL decision, change rationale, approval, affected task contracts, and evidence. A dependent Project ownership task retrieves the current Session contract; earlier rationale is directly retrievable when needed.
+
+An accepted result produces a short parent handoff containing contracts and outcomes later work needs, with canonical paths or symbols and evidence pointers. Recommend a fresh conversation for the next task; file isolation cannot remove previous work already loaded into a conversation. Keep general retrospectives outside execution context unless a lesson still constrains work; consequential decisions always retain identifiable records.
+
+### Preservation check
+
+Before compaction, inventory every agreed item in the affected artifacts, including future-work agreements. After restructuring, verify that:
+
+- Every requirement, constraint, contract, acceptance condition, and consequential decision still has one identifiable canonical location; its meaning is preserved.
+- Every moved item has a direct reference that resolves to the file and ID or anchor. The current task includes or references every governing agreement without requiring a history scan.
+- Every superseded decision has an explicit approved replacement and a linked record retaining rationale, approval, and affected contracts and evidence.
+- The task map and dependent tasks point to current contracts. Inspect sibling contract pointers only under the contract-change exception; use the parent map to audit coverage.
+- All unresolved questions, unfinished obligations, future constraints, acceptance IDs, and shipped evidence references remain accounted for; mark invalidated evidence and required reruns explicitly.
+- Every retained validation result resolves to its reproducible procedure as defined in Acceptance and evidence, including after completed edit steps are removed.
+
+Record a short check result with any gaps in the artifact's current status or audit section. Compaction is complete only when every item is accounted for and references resolve. Gaps stay active until reconciled; document editing never substitutes for semantic approval.
+
+## Resume state
+
+Near the top of the PLAN record `Current task` (or approved concurrent set), `State`, and `Remaining`. Record each mapped task's explicit state as well as its checkbox. The task repeats its identity and state as a synchronized view, with granular remaining work in its final section. Update both at every phase transition and before handing off. Checkboxes track accepted completion; the explicit state selects the next action.
+
+| State | Next action |
+| --- | --- |
+| `awaiting-map-review` | Wait for task-map approval. |
+| `ready-to-detail` | Detail the named task when authorized to continue. |
+| `detailing` | Finish its execution brief and scope check. |
+| `awaiting-plan-review` | Wait for this task's plan approval. |
+| `implementing` | Continue approved implementation and validation. |
+| `awaiting-result-review` | Wait for acceptance or requested revision. |
+| `reopened` | Address recorded review work; material design changes return to the Plan gate. |
+| `accepted` | Task boundary accepted; publish its handoff and select remaining work. |
+| `complete` | No task work remains; all results are accepted. |
+
+Record approval scope and any follow-up conditions compactly in current status so resume does not reconstruct them from chat. Follow the flow's transitions; `complete` requires every task result accepted, no planned work remaining, and `Current task: none`.
 
 ## Formatting
 
-Format and envelope are simple and strict. Each Plan must be one single fenced code block labeled as `md` that begins and ends with triple backticks. Do not nest additional triple-backtick code fences inside; when you need to show commands, transcripts, diffs, or code, present them as indented blocks within that single fence. Use indentation for clarity rather than code fences inside a Plan to avoid prematurely closing the Plan's code fence. Use two newlines after every heading, use # and ## and so on, and correct syntax for ordered and unordered lists.
+Use plain Markdown with one blank line after headings. When presenting a whole plan in chat, use one `md` fence and indented examples inside it; files omit that envelope. Use the skeleton's sections, omit optional sections without useful content, and add no placeholder prose. Checklists track progress in the PLAN and remaining work in the task. Tables are useful for coverage or state mappings when clearer than prose.
 
-Omit optional sections when they do not add value. Do not include sections whose only content would be `N/A`.
-
-When writing a Plan to a Markdown (.md) file where the content of the file *is only* the single Plan, you should omit the triple backticks.
-
-Use the most compact clear form. Prefer short prose for rationale and bullets for discrete facts or steps. Avoid tables and long enumerations unless they are genuinely clearer. Checklists are reserved for `Progress`, where they are mandatory.
-
-Use only the sections defined in the relevant skeleton (`PLAN-SKELETON.md` or `TASK-SKELETON.md`). You may omit or combine those sections when the guidance allows, but must not add any section the skeleton does not define. If information does not fit an existing section, place it in the closest applicable one rather than introducing a new heading.
-
-## Guidelines
-
-Self-containment and plain language are paramount. Define non-ordinary terms (such as "daemon" or "RPC gateway") at first use and tie them to relevant repository paths or commands. Put the definition once at the highest artifact scope that needs it; do not rely on unavailable prior context or architecture documents.
-
-Avoid undefined jargon and implementations that compile without producing meaningful behavior. Resolve consequential ambiguity in the plan and give only the rationale needed to understand the choice. Specify user-visible effects fully and incidental implementation detail only when it constrains correct execution.
-
-Anchor the plan with observable outcomes. State what the user can do after implementation, the commands to run, and the outputs they should see. Acceptance should be phrased as behavior a human can verify ("after starting the server, navigating to [http://localhost:8080/health](http://localhost:8080/health) returns HTTP 200 with body OK") rather than internal attributes ("added a HealthCheck struct"). If a change is internal, explain how its impact can still be demonstrated (for example, by running tests that fail before and pass after, and by showing a scenario that uses the new behavior).
-
-Specify repository context explicitly. Name files with their complete repository-relative paths, name functions and modules precisely, and describe where new files should be created. If touching multiple areas, include a short orientation paragraph that explains how those parts fit together so a novice can navigate confidently. When running commands, show the repository-relative working directory and exact command line. When outcomes depend on environment, state the assumptions and provide alternatives when reasonable. Keep every filesystem path relative to the repository root; do not include absolute paths, including for external tools or resources.
-
-Be idempotent and safe. Write the steps so they can be run multiple times without causing damage or drift. If a step can fail halfway, include how to retry or adapt. If a migration or destructive operation is necessary, spell out backups or safe fallbacks. Prefer additive, testable changes that can be validated as you go.
-
-Validation is not optional. Include instructions to run tests, to start the system if applicable, and to observe it doing something useful. Describe comprehensive testing for any new features or capabilities. Include expected outputs and error messages so a novice can tell success from failure. Where possible, show how to prove that the change is effective beyond compilation (for example, through a small end-to-end scenario, a CLI invocation, or an HTTP request/response transcript). State the exact test commands appropriate to the project’s toolchain and how to interpret their results.
-
-Capture evidence. When your steps produce terminal output, short diffs, or logs, include them inside the single fenced block as indented examples. Keep them concise and focused on what proves success. If you need to include a patch, prefer file-scoped diffs or small excerpts that a reader can recreate by following your instructions rather than pasting large blobs.
-
-## Tasks
-
-Tasks describe goal, work, result, and proof without bureaucracy. State scope, the new observable outcome, the required edits and commands, and acceptance as compactly as correctness permits. Progress tracks granular state separately. Omit no detail needed by a future implementer, but do not expand a straightforward task to fill a template.
-
-Each task is a **vertical capability**: the smallest end-to-end slice that produces observable behavior for one capability, cutting through every layer that capability touches — whatever layers the system has, be it storage and interface, parser and evaluator, or input and output. It is independently *demonstrable* — you can run it and watch it work — which matters far more than a small diff. When vertical slicing and a smaller, easier-to-review commit conflict, slice vertically; a larger end-to-end task beats a tidy layer. Decompose by capability, never by layer: deliver one whole capability, then the next capability built on it — not one layer for every capability, then the next layer.
-
-Each capability owns its own slice of every layer — the data, settings, interfaces, and tests it needs land in the task that introduces the capability, never in an earlier task. A task may introduce a shared **mechanism** — a runtime or storage connection, a configuration loader, a test harness, any capability-agnostic plumbing — but only the mechanism, never a specific future capability's **content**. Pre-building content for capabilities that land later (every data structure up front, every setting, every interface) is the horizontal layer to reject.
-
-The litmus for a capability task: *can a human observe this task working without the next task existing?* If no, it is a layer — fold it into the slice that makes it observable. A mechanism task is the rare, deliberately content-free exception, justified only when wedging its plumbing into the first capability's slice would be unclean; it is demonstrable merely as the system starting up, connecting, or loading its configuration, with no domain behavior, and it must hold no capability's content.
-
-A capability bundles all the layers it needs and is the unit; it is never split by layer. The next task is a new capability built on the shipped one, not the next layer of the same one. Only when a single capability is still too large to land in one task, thin it into a **walking skeleton** — the thinnest end-to-end path that still produces observable behavior — and let later tasks enrich along the same vertical. Splitting a capability into horizontal layers is never the fallback.
-
-Tasks are still defined in the order they must be done to build the plan's goal incrementally, each one independently demonstrable.
-
-## Living plans, tasks, and design decisions
-
-### Plans
-
-* Plans and tasks are living documents. As you make key design decisions, update the plan to record both the decision and the thinking behind it. Record all decisions in the plan's `Decision Log` section when they apply to all or multiple child tasks only. When updating a plan, never update a decision log entry, always add a new one.
-* Plans must contain and maintain a `Progress` section, a `Surprises & Discoveries` section, a `Decision Log`, and an `Outcomes and Retrospective` section. These are not optional.
-* When you discover optimizer behavior, performance tradeoffs, unexpected bugs, or inverse/unapply semantics that shaped your approach, capture those observations in the `Surprises & Discoveries` section with short evidence snippets (test output is ideal).
-* If you change course mid-implementation, document why in the `Decision Log` and reflect the implications in `Progress`. Plans are guides for the next contributor as much as checklists for you.
-* At completion of a major task or the full plan, write an `Outcomes and Retrospective` entry summarizing what was achieved, what remains, and lessons learned.
-
-### Tasks
-
-* Tasks are living documents. As you make key design decisions exclusive to the task, update the task to record both the decision and the thinking behind it. Record all decisions in the plan's `Decision Log` section when they apply to all or multiple child tasks only.
-* Tasks must contain and maintain a `Progress` section, a `Surprises & Discoveries` section, and a `Decision Log` section. These are not optional.
-* When you discover optimizer behavior, performance tradeoffs, unexpected bugs, or inverse/unapply semantics that shaped your approach, capture those observations in the `Surprises & Discoveries` section with short evidence snippets (test output is ideal).
-* When a task-local observation proves cross-cutting — a convention or constraint later tasks must also honor — promote it to the parent plan's `Surprises & Discoveries` exactly as a cross-cutting decision is promoted to the `Decision Log`: the parent holds the full observation and the task keeps only a one-line pointer to it. Never leave the full observation in both places.
-* If you change course mid-implementation, document why in the `Decision Log` and reflect the implications in `Progress`. Tasks are guides for the next contributor as much as checklists for you.
-
-# Prototyping tasks and parallel implementations
-
-It is acceptable—-and often encouraged—-to include explicit prototyping tasks when they de-risk a larger change. Examples: adding a low-level operator to a dependency to validate feasibility, or exploring two composition orders while measuring optimizer effects. Keep prototypes additive and testable. Clearly label the scope as “prototyping”; describe how to run and observe results; and state the criteria for promoting or discarding the prototype.
-
-Prefer additive code changes followed by subtractions that keep tests passing. Parallel implementations (e.g., keeping an adapter alongside an older path during migration) are fine when they reduce risk or enable tests to continue passing during a large migration. Describe how to validate both paths and how to retire one safely with tests. When working with multiple new libraries or feature areas, consider creating spikes that evaluate the feasibility of these features _independently_ of one another, proving that the external library performs as expected and implements the features we need in isolation.
-
-# Skeletons
-
-The structural templates live in their own files so each operation loads only the one it needs: author or revise the parent plan from the plan skeleton, detail or execute a task from the task skeleton.
-
-- Plan: [`PLAN-SKELETON.md`](PLAN-SKELETON.md) — the ordered sections of a `PLAN.md`.
-- Task: [`TASK-SKELETON.md`](TASK-SKELETON.md) — the ordered sections of a `tasks/NN-slug.md`.
-
-Start from the relevant skeleton and add only material content. Use only its sections; omit or combine them only where allowed, and add no new section. Required living sections may remain empty until there is something real to record; never add placeholder prose. A plan's `Progress` is the coarse task index and its `Decision Log` is cross-task; a task's `Progress` is granular and its `Decision Log` is task-local.
-
-# Important Notes
-
-The bar is a minimal, self-contained plan from which a stateless agent or novice can produce and verify the intended result.
-
-When revising, reflect the change wherever it materially affects the plan or tasks and append a concise change note with the reason. Include rationale only when it affects implementation or prevents likely misinterpretation.
+All paths in planning artifacts, including commands, working directories, examples, logs, and evidence, are relative to the repository root. Treat artifacts as public: include no secrets. Use the current Git username where an author is needed.

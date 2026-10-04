@@ -1,9 +1,13 @@
 # Skills
 Collection of personal agent skills together with their [third-party](#third-party-skills) dependencies.
 
+Skill dependencies form an acyclic graph: skills reference their dependencies, while dependencies remain independent of their callers.
+
+The planning hierarchy is `senior` → `staged-plan-tasks` → `plan-tasks`, from top to bottom. References point downward; `senior` may also route standalone work directly to `plan-tasks`. Each layer is usable without the layers above it.
+
 ## [setup-senior-skill](./personal/setup-senior-skill/SKILL.md)
 
-Checks whether a repository has `senior` and all of its prerequisite skills installed, then recommends the repository-level `AGENTS.md` guidance for using that workflow. This skill is available only when explicitly invoked.
+Checks whether a repository has `senior` and its phase skills installed, reports missing skills by affected phase, then recommends the repository-level `AGENTS.md` guidance for using that workflow. This skill is available only when explicitly invoked.
 
 ### Installation
 
@@ -15,7 +19,7 @@ npx skills add vytautasjc/skills --skill setup-senior-skill
 
 Plan Tasks is a skill heavily inspired by [Codex Exec Plans](https://developers.openai.com/cookbook/articles/codex_exec_plans) to create local feature scoped plans split into smaller tasks. Works wonderfully together with [grilling](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) skill to keep you in the driving seat while planning.
 
-Plans can be completed one task at a time across multiple sessions because progress and status are saved between sessions.
+Approve the task map, then detail, approve, implement, and review one task before detailing its successor. Future tasks keep their agreed outcomes, scope boundaries, dependencies, and acceptance IDs in the map. Explicit state and remaining work support resume across sessions; accepted contracts pass through short parent handoffs. Start the next task in a fresh conversation to bound earlier context.
 
 ### Installation
 
@@ -68,7 +72,7 @@ docs/plans
 
 Staged Plan Tasks is built on top of [plan-tasks](#plan-tasks) to tackle broader tasks, large features composed of multiple tasks.
 
-Work can be completed task by task across multiple sessions because progress and status are saved between sessions. Stages following the first are detailed just-in-time, after previous stage is delivered. Not detailing tasks for all stages at once helps to avoid change of scope, especially when new observations and details occur during previous stage implementation.
+The SPEC retains the complete agreed outcome, and the ROADMAP maps it to small stages, each delivering one responsibility end-to-end. Tasks own bounded implementation areas within a stage; backend and frontend work are separate tasks. Decompose and accept a stage using its complete SPEC coverage; execute each task using its assigned agreements, required contracts, invariants, and terms. Detail the next task just in time, or the small approved set intended for concurrent work, then accept the assembled stage before planning the next. Compaction preserves every agreement in a canonical home with explicit references.
 
 ### Installation
 
@@ -82,46 +86,41 @@ npx skills add vytautasjc/skills --skill plan-tasks staged-plan-tasks
 <summary>💬 Input</summary>
 
 ```sh
-codex > $staged-plan-tasks Update AGENTS.md with security guidelines. Update existing backend api code according to these guidelines.
+codex > $staged-plan-tasks Limit authentication requests and show browser users when to retry. Also cap API request body sizes.
 
-• I’m using staged-plan-tasks as requested, with the repository’s senior workflow governing this planning phase. I’ll inspect the backend and discovery record, then create the effort specification and lean delivery roadmap before stopping at the required Roadmap/Spec gate—no stage implementation yet.
+• I’m using staged-plan-tasks. I’ll capture the agreed behavior in the SPEC and map focused stages in the ROADMAP.
 
 [...]
 
-• I’ve scoped this as two milestones.
+• Created docs/plans/api-request-limits/SPEC.md and ROADMAP.md.
 
-• Created docs/plans/api-security-hardening/SPEC.md and ROADMAP.md.
+  Proposed stages:
 
-  The proposed delivery order is:
+  1. authentication-rate-limiting — excess authentication requests return HTTP 429 with Retry-After, and the browser shows when the user can retry.
+  2. request-body-limits — oversized API request bodies receive the agreed rejection response.
 
-  1. secure-api-baseline — add shared and API-specific security guidelines, then enforce safe production configuration, trusted browser origins, security headers, and HTTP input limits.
-  2. hardened-sessions-and-auth-endpoints — protect Dummy User login/session/logout against cross-site requests and automated abuse, harden cookies, and prevent reusable session credentials from being stored in PostgreSQL.
-  
-  Roadmap/Spec gate: Please approve the agreed security outcome, its requirement-to-acceptance traceability, and the two-stage coverage map. Once approved, I’ll plan Stage 01 and stop at its Map gate before detailing tasks or changing source code.
+  Roadmap/Spec gate: Approve the agreed limits, rejection behavior, and two-stage coverage map. Then I’ll map Stage 01’s tasks.
 
 codex > ok
 
-• Roadmap and specification approved. I’m now applying plan-tasks to Stage 01 only: I’ll map the stage’s assigned SPEC IDs to vertical tasks, add the stage plan pointer to the roadmap, and stop at the Stage 01 Map gate before detailing any task or editing guidelines/source.
+• Stage 01’s task map is ready in docs/plans/api-request-limits/stages/01-authentication-rate-limiting/PLAN.md.
 
-[...]
+  - 01 backend-enforcement — enforce the authentication limit and validate HTTP rejection and recovery behavior.
+  - 02 browser-retry-handling — show retry guidance using the backend’s accepted response contract; validate the UI against controlled API responses.
 
-  Stage 01 Map gate: Approve this task breakdown and order, and I’ll detail Task 01 only.
+  Stage 01 acceptance will verify the assembled browser/API behavior. Task 02 depends on Task 01’s accepted contract. Stage 02 remains a ROADMAP entry.
+
+  Stage 01 Map gate: Approve the task boundaries and order. Then I’ll detail Task 01.
 
 codex > ok
 
 [...]
 
-• Task 01 is fully detailed in docs/plans/api-security-hardening/stages/01-secure-api-baseline/tasks/01-secure-runtime-contract.md.
+• Task 01’s execution brief is ready in docs/plans/api-request-limits/stages/01-authentication-rate-limiting/tasks/01-backend-enforcement.md.
 
-  Key decisions:
+  It owns backend enforcement, the HTTP 429 and Retry-After response contract, and behavioral validation against the agreed SPEC acceptance IDs. Browser behavior belongs to Task 02.
 
-  - Production rejects Dummy User login and non-HTTPS API/frontend URLs.
-  - Root AGENTS.md gains cross-cutting security rules.
-  - No dependencies, database schema, routes, sessions, or OAuth semantics change in this task.
-
-  No source or AGENTS.md changes have been made yet.
-
-  Task 01 Plan gate: Approve this task plan, and I’ll detail Task 02. All Stage 01 tasks must pass their individual Plan gates before implementation begins.
+  Task 01 Plan gate: Approve this brief to implement Task 01. After its result is accepted and continuation is authorized, I’ll detail Task 02 using the accepted contract.
 
 codex > ok
 
@@ -132,22 +131,17 @@ codex > ok
 <details>
 <summary>📦 Output</summary>
 
+Artifacts at Task 01’s Plan gate. Future tasks and stages remain mapped in PLAN.md and ROADMAP.md.
+
 ```sh
-docs/plans/api-security-hardening
+docs/plans/api-request-limits
 ├── SPEC.md
 ├── ROADMAP.md
 └── stages
-    ├── 01-secure-api-baseline
-    │   ├── PLAN.md
-    │   └── tasks
-    │       ├── 01-secure-runtime-contract.md
-    │       ├── 02-trusted-browser-boundary.md
-    │       └── 03-bounded-http-input.md
-    └── 02-hardened-sessions-and-auth-endpoints
+    └── 01-authentication-rate-limiting
         ├── PLAN.md
         └── tasks
-            ├── 01-harden-auth-endpoints.md
-            └── 02-improve-session-handling.md
+            └── 01-backend-enforcement.md
 ```
 </details>
 
@@ -156,6 +150,10 @@ docs/plans/api-security-hardening
 Senior is a routing skill that is build on top of [plan-tasks](#plan-tasks), [staged-plan-tasks](#staged-plan-tasks), and third party skills.
 
 It can be used for planning, implementation, code review. And it is made to follow plans made using the skills mentioned before.
+
+Load skills by phase, with the governing planning skills also required when executing, reviewing results, or resuming a plan. Add ponytail and TDD for implementation and code review, domain modeling when meaning changes, and grilling for unresolved decisions. A missing skill blocks only the work requiring it. Resuming approved work uses its recorded state and remaining obligations.
+
+Keep every governing agreement in a durable, identifiable canonical home. Compact task briefs reference current contracts; superseded decisions retain directly linked history records with replacement, rationale, approval, and affected contracts or evidence. A preservation check precedes compaction. Git history keeps ordinary edits, while agreed decisions remain directly retrievable.
 
 ### Installation
 
@@ -181,7 +179,7 @@ npx skills add vytautasjc/skills --skill plan-tasks staged-plan-tasks senior
 ```sh
 codex > $senior Let's implement a dummy API endpoint that returns 200 OK. Interview me    
 
-• I’m using the senior workflow because you named it. Since you asked for an interview, I’ll first load its required planning, grilling, simplicity, TDD, and domain-language gates; then I’ll ask one focused question at a time before we write or change anything.
+• I’m using the senior workflow because you named it. I’ll load plan-tasks for this milestone and grilling for the interview. Implementation will load ponytail and TDD after the task plan is approved.
 
 • The API already exposes GET /internal/health, which returns 200 with { "status": "ok" }.
 

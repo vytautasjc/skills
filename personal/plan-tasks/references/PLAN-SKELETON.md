@@ -1,60 +1,50 @@
 # Plan Skeleton
 
-Structural template for a `PLAN.md`. Follow [`PLANS.md`](PLANS.md). Keep required sections, but add no filler or placeholder prose; one sentence is enough when it fully communicates the point.
+Template for `PLAN.md`. Follow [`PLANS.md`](PLANS.md). Keep Purpose, Progress, and Validation and Acceptance; include other sections only when they contain current information.
 
-    # <Short, action-oriented description>
+    # <Plan responsibility>
 
-    Living plan: keep `Progress`, `Surprises & Discoveries`, `Decision Log`, `Outcomes`, and `Retrospective` current.
-
+    Current task: <NN-slug | approved concurrent set | none>
+    State: <state from PLANS.md>
+    Remaining: <exact next action or approval>
     Method: <repository-relative path to PLANS.md, only when checked in>
 
     ## Purpose / Big Picture
 
-    State what becomes possible and how to observe it. Use one sentence when sufficient.
+    State the focused end-to-end plan outcome, scope boundary, and exclusions.
 
     ## Progress
 
-    The delivery sequence of tasks. One line per task: status box, completion timestamp, number, slug, and one-line scope. This is the resume index and the only place coarse status is tracked. This section must always reflect the actual current state of the work.
+    Map every task; create detailed files only for the next task, approved concurrent set, and earlier tasks. Check a box only after result acceptance. The fields above select the resume action.
 
-    - [x] (2026-06-20 13:00Z) 00 example — completed task looks like this
-    - [ ] 01 config — load environment, config
-    - [ ] 02 prisma — database and migrations
+    - [ ] 01 <slug> — Outcome: <observable behavior>.
+      Scope: <bounded implementation concern and relevant exclusions>.
+      Owner and write paths: <sole owner; disjoint paths for concurrency>.
+      State: <task state from PLANS.md>.
+      Dependencies: <accepted predecessor outcome or none; required approved contracts>.
+      Agreements: <governing parent IDs or anchors; canonical references>.
+      Acceptance: <IDs>.
 
-    ## Surprises & Discoveries
+    ## Context and Contracts
 
-    Capture optimizer behavior, performance tradeoffs, unexpected bugs, or insights that shaped the approach across tasks, with short evidence (test output is ideal).
+    Repository-relative paths, canonical symbols, and glossary pointers shared by tasks. Define contracts up front where they constrain decomposition, and approve all required shared contracts before dependent implementation; add accepted implementation contracts as they become available. Assign shared constraints to all applicable tasks in Progress.
 
-    - Observation: …
-      Evidence: …
+    ## Plan State and Current Decisions
 
-    ## Decision Log
+    Record plan state, approved concurrent set (if any), ownership of shared files and integration, decomposition checks/exceptions, and task dependencies. Decisions or discoveries that still govern multiple tasks, including future obligations and unresolved questions. Give consequential decisions stable IDs or named anchors. Keep each at its canonical scope; link canonical agreements and repository contracts instead of copying them.
 
-    Record every decision made that affects this plan's tasks while working on the plan in the format:
+    - D001: <current choice>.
+      Rationale: <only what affects implementation or prevents a mistake>.
+      Approval: <scope and recorded approval, when needed>.
 
-    - Decision: …
-      Rationale: …
-      Date/Author: (2025-10-01 13:00Z) / <git username>
+    ## Accepted Handoffs
 
-    ## Outcomes
-
-    Summarize outcomes, gaps, and lessons learned of each child task for further tasks to be able to pick up and use without needing to read specific task file. This section should read as usage instruction for further task implementation work.
-
-    ## Retrospective
-    
-    Summarize general outcome, gaps, and lessons learned at plan completion. Compare the result against the original purpose.
-
-    ## Context and Orientation
-
-    Give only the repository context needed to execute the plan: key repository-relative paths, how they connect, and definitions of non-obvious terms. Do not refer to prior plans.
+    Record each accepted result's handoff as defined in PLANS.md Current instructions and history.
 
     ## Validation and Acceptance
 
-    Describe how to start or exercise the system and what to observe. Phrase acceptance as behavior, with specific inputs and outputs. If tests are involved, say "run <project’s test command> and expect <N> passed; the new test <name> fails before the change and passes after>".
+    Define stable acceptance IDs and observable scenarios. Map every governing agreement and acceptance ID to tasks, including shared constraints. Assign assembled-behavior validation and cross-task checks to an explicit task; validation commands live in task briefs.
 
-    ## Idempotence and Recovery
+    ## Audit References
 
-    If steps can be repeated safely, say so. If a step is risky, provide a safe retry or rollback path. Keep the environment clean after completion.
-
-    ## Artifacts and Notes
-
-    Include this section only when concise transcripts, diffs, or snippets materially help the next agent. Keep entries focused on what proves success.
+    Direct repository-relative file and ID/anchor pointers to decision history and shipped evidence, following PLANS.md Current instructions and history. Record the preservation-check result here when compacting the PLAN.
