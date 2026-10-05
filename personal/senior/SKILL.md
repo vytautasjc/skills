@@ -21,7 +21,7 @@ If a skill is missing, stop only the work for which it is necessary. Identify th
 | Plan one responsibility from start to end | `plan-tasks` |
 | Divide multiple responsibilities into stages | `staged-plan-tasks`. Also load `plan-tasks` to divide the current stage into tasks. |
 | Execute, review results, or continue an existing PLAN or ROADMAP | `plan-tasks`. Also load `staged-plan-tasks` if a ROADMAP controls the work. |
-| Implement | `ponytail` and `tdd` |
+| Implement code | `ponytail` and `tdd` |
 | Review code | `ponytail` and `tdd`. Load the `tdd` reference `tests.md` for test quality. |
 | Change domain meaning or resolve conflicting terms | `domain-modeling` |
 | Resolve an open decision with important effects | `grilling`, unless the user instructs you to work independently. |
@@ -51,10 +51,17 @@ When domain meaning changes, use `domain-modeling` to prepare and examine the sh
 
 ## Implement
 
-Complete implementation only when the two conditions hold:
+Before you change implementation code, load and use `ponytail` and `tdd`. Both skills are mandatory for every feature, logic change, and bug fix. This rule also applies to small changes, resumed work, and fixes from code review.
 
-- **Lazy pass, `ponytail`:** use the simplest solution that works. Add code only for current needs.
-- **Test-first cycle, `tdd`:** write a failing test for each behavior. Then make that test pass. For a bug, start with a regression test.
+TDD is mandatory even for a one-line change. Use `ponytail` to simplify the implementation without removing required tests.
+
+Use one TDD cycle for each new or changed behavior:
+
+1. **Red:** write a test through an agreed public interface. For a bug fix, write a regression test that reproduces the bug. Run the test before you change implementation code. Confirm that the test fails because the behavior is missing or incorrect.
+2. **Green:** use `ponytail` to select the simplest solution that works. Add only the code necessary to make the test pass. Run the test and confirm that it passes.
+3. Repeat the cycle for the next behavior.
+
+Complete implementation only after you record Red and Green test results for each new or changed behavior. All required checks must pass. If you cannot run a required test, stop the affected implementation. Report why you cannot run the test.
 
 ## Code Review
 
