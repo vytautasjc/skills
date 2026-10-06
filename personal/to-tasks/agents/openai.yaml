@@ -1,0 +1,5 @@
+interface:
+  display_name: "to-tasks"
+  short_description: "Turn a spec or conversation into a plan and tasks"
+policy:
+  allow_implicit_invocation: false

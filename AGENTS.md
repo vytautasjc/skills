@@ -2,11 +2,31 @@
 
 These rules are mandatory for all skill changes.
 
-## Writing style
+## Communication
 
-Use [ste-writing-skill](personal/ste-writing-skill/SKILL.md) for all explanations, documentation, comments, and user-facing text. Apply the skill to frontmatter descriptions, instructions, reference files, and templates.
+Use ASD-STE100 Simplified Technical English for:
+- user communication
+- specifications
+- implementation plans
+- task descriptions
+- documentation
+- skills
 
-Before you complete a skill change, review all changed prose against the skill.
+Use concise text, but keep all required information.
+Keep the source meaning, requirements, and constraints unchanged when you revise prose.
+
+- Use short, direct sentences with one instruction or idea each.
+- Use active voice and explicit subjects and objects.
+- Use common words and consistent terms.
+- Use pronouns only when their references are clear.
+- Remove unnecessary words.
+- Use literal language. Do not use idioms or slang.
+
+Keep code identifiers, API names, commands, paths, and state values unchanged.
+Keep error messages, quoted text, and established technical terms unchanged.
+
+Do not apply these language rules to text that must remain verbatim.
+If the user requests another language, use that language instead.
 
 ## Skill dependencies
 
