@@ -7,8 +7,6 @@ Plan and deliver work as a sequence of **tasks**. Give each task a result with i
 
 # Instructions
 
-Use [ste-writing-skill](../ste-writing-skill/SKILL.md) for all explanations, approval requests, review reports, documentation, comments, and user-facing text.
-
 To create, revise, validate, execute, or continue a plan, read [`PLANS.md`](references/PLANS.md). It gives rules for tasks, decomposition, context ownership, preservation, concurrency, task size, and resume states. This skill gives rules for the procedure and approval gates.
 
 To write or restructure the parent plan, load [`PLAN-SKELETON.md`](references/PLAN-SKELETON.md). To detail or restructure a task, load [`TASK-SKELETON.md`](references/TASK-SKELETON.md). For execution, use the approved task brief and `PLANS.md`. Load templates only when the structure must change.

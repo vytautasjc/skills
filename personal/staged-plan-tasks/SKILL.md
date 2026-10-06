@@ -13,8 +13,6 @@ Use this skill when a stage map is necessary for multiple responsibilities. Also
 
 # Instructions
 
-Use [ste-writing-skill](../ste-writing-skill/SKILL.md) for all explanations, approval requests, review reports, documentation, comments, and user-facing text.
-
 - To create, revise, review, or keep the effort SPEC, read [`SPECS.md`](references/SPECS.md). Also read it to give SPEC coverage to stages or tasks. It gives rules for document ownership, ID traceability, retrieval scope, and changes to agreed meaning. During task execution, use the approved coverage references.
 - To create, revise, or continue a ROADMAP, read [`ROADMAPS.md`](references/ROADMAPS.md). It gives rules for ROADMAP content, stage-to-SPEC coverage, formatting, size, and the skeleton.
 - To deliver a stage, use `plan-tasks` at the stage directory. Use the staged additions below. Load necessary repository references. Keep sibling files closed with the context rules.

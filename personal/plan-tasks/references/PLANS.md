@@ -195,9 +195,6 @@ Write approval scope and follow-up conditions briefly in current status. Make co
 
 ## Formatting
 
-Use [ste-writing-skill](../../ste-writing-skill/SKILL.md) for language guidance and the review before delivery.
-Apply it to PLANs, task briefs, handoffs, history records, and supporting planning documents.
-
 Use plain Markdown. Add one blank line after each heading. For a complete plan in chat, use one `md` code fence. Indent examples inside that fence. Do not use the outer fence in files.
 
 Use the required skeleton sections. Omit optional sections that have no useful content. Replace placeholder text with actual content.
