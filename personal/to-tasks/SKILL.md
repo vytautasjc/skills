@@ -1,7 +1,6 @@
 ---
 name: to-tasks
-description: Create or update an implementation plan and task files from a spec or a clear conversation. Use to break work into small, verifiable vertical slices.
-disable-model-invocation: true
+description: Create or update an implementation plan and task files from a spec or a clear conversation. Use to break work into small, verifiable vertical slices. Also update existing plans and tasks with new context.
 ---
 
 # To-Tasks
@@ -12,12 +11,12 @@ Do not create a plan for a trivial change unless the user explicitly requests on
 
 ## Workflow
 
-1. Read the input, repository guidance, and relevant code. Preserve agreed requirements and decisions.
+1. Read the input, repository guidance, and relevant code. Preserve agreed requirements and decisions. Require approval of the relevant spec scope before finalizing the plan and tasks.
 2. Ask about missing decisions that change scope, dependencies, or acceptance criteria. Continue planning work that does not depend on those decisions. Record remaining questions and assumptions in the plan.
 3. Use the requested output directory. Otherwise, place the plan beside the input spec. For conversation input, use `docs/features/<feature>/` from the repository root.
 4. Read [PLAN.md](templates/PLAN.md) when drafting or changing the plan structure. Read [TASK.md](templates/TASK.md) when drafting or changing task files. Use neither template for status-only updates.
 5. Save the draft `PLAN.md` in the output directory and task files in its `tasks/` directory. Name tasks `01-<outcome>.md`, `02-<outcome>.md`, and so on. Within dependency constraints, place tasks that resolve major technical risks or unknowns as early as possible.
-6. Summarize the output and unresolved items. Request one review of the complete output. Revise the same files as needed. Treat the output as final only after explicit user approval.
+6. Summarize the output and unresolved items. Request one review of the complete output. Revise the same files as needed. Treat the output as final only after explicit user approval. Record the human approval in `PLAN.md`.
 
 ## Plan
 
@@ -74,6 +73,11 @@ Use file counts as estimates. Prefer XS, S, and M. Allow L when a smaller split 
 ## Updates and shared rules
 
 - Before saving, check for an existing plan. Never overwrite a plan for unrelated work. Report the conflict and use another location only after the user resolves the conflict.
-- Keep task completion status in `PLAN.md`. Mark a task done only after its acceptance criteria pass.
+- Keep task completion status in `PLAN.md`. Mark a task done only after its acceptance criteria pass and the human explicitly accepts the implementation result.
 - Preserve completed task records and existing filenames. Add or revise unfinished tasks when requirements change.
 - Do not repeat rules from `AGENTS.md` or other repository guidance in the plan or tasks. Include only feature-specific additions, explicit changes, or exceptions.
+
+- For updates, read the existing plan, task files, and new context.
+- Obtain explicit human approval of changed plan and task scope. Do not change criteria to excuse failing code.
+- Add a new task for changes or defects in accepted work. Link the new task to the earlier task. Update affected checkpoints.
+- Keep check results, human review feedback, acceptance evidence, and remaining work in the task. These notes and plan checkbox updates do not require new document approval.

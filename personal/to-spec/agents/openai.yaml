@@ -1,5 +1,5 @@
 interface:
   display_name: "to-spec"
-  short_description: "Turn a conversation into a spec"
+  short_description: "Turn a conversation into a spec, or revise a spec"
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

@@ -24,3 +24,12 @@ Source: [Relevant spec section; omit for conversation input.]
 ## Verification
 
 - [Check or procedure] → [Expected result]
+
+## Result and Review
+
+[Append each review attempt. Omit until implementation starts.]
+
+- Changes: [Implemented behavior and changed files]
+- Verification: [Actual check results and any missing checks or existing failures]
+- Human review: [Feedback and explicit acceptance of the checked result]
+- Remaining work: [Corrections, amendments, or None]

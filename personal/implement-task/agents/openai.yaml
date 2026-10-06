@@ -1,0 +1,5 @@
+interface:
+  display_name: "implement-task"
+  short_description: "Implement one approved task for human review"
+policy:
+  allow_implicit_invocation: true

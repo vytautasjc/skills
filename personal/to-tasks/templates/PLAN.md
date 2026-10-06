@@ -1,6 +1,7 @@
 # Implementation Plan: [Feature/Project Name]
 
 Source: [Spec link; omit for conversation input.]
+Status: [Human approval status]
 
 ## Overview
 

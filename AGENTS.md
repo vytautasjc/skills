@@ -2,6 +2,10 @@
 
 These rules are mandatory for all skill changes.
 
+## Git changes
+
+Never stage or commit changes unless the human explicitly asks for that action.
+
 ## Communication
 
 Use ASD-STE100 Simplified Technical English for:

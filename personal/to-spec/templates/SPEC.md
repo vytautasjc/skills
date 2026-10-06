@@ -1,5 +1,7 @@
 # Spec: [Project/Feature Name]
 
+Status: [Human approval status]
+
 ## Objective
 [What we're building and why.]
 
