@@ -6,12 +6,11 @@ description: Examine the repository's senior skill installation and recommend AG
 # Setup Senior Skill
 
 Audit the current repository only. Use the [Vytautas skills README](https://github.com/vytautasjc/skills#readme) as the installation source of truth.
-Use [ste-writing-skill](../ste-writing-skill/SKILL.md) for explanations, reports, and proposed repository guidance.
 
 ## Examine the installation
 
 1. Find the repository root. Find repository-local skills by the `name` in each `SKILL.md` frontmatter. Search hidden agent directories. Exclude `.git`. Count only skills in the repository.
-2. Look for `senior` and its phase skills: `ste-writing-skill`, `plan-tasks`, `staged-plan-tasks`, `ponytail`, `domain-modeling`, `grilling`, and `tdd`.
+2. Look for `senior` and its phase skills: `plan-tasks`, `staged-plan-tasks`, `ponytail`, `domain-modeling`, `grilling`, and `tdd`.
 3. If `senior` is present, read its `Phase loading` table. For an earlier installation, use `Prerequisites`. If its skill selection rules differ, use those rules. Count a skill as installed only if its `SKILL.md` is present in the repository.
 
 If `senior` is missing, ask the user to follow the README's installation instructions before you recommend guidance.

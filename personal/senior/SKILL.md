@@ -17,7 +17,6 @@ If a skill is missing, stop only the work for which it is necessary. Identify th
 
 | Phase or condition | Skills to load |
 | --- | --- |
-| Write explanations, documentation, comments, user-facing text, or planning artifacts | [ste-writing-skill](../ste-writing-skill/SKILL.md) |
 | Plan one responsibility from start to end | `plan-tasks` |
 | Divide multiple responsibilities into stages | `staged-plan-tasks`. Also load `plan-tasks` to divide the current stage into tasks. |
 | Execute, review results, or continue an existing PLAN or ROADMAP | `plan-tasks`. Also load `staged-plan-tasks` if a ROADMAP controls the work. |
@@ -29,8 +28,6 @@ If a skill is missing, stop only the work for which it is necessary. Identify th
 To continue work, first load the applicable planning skills. Then use the PLAN or ROADMAP state to select the phase. Use the skill's resume procedure for the remaining approved work. Keep recorded approvals valid.
 
 Prepare a new plan when an important change requires one. Read established terms through their canonical references. Use `domain-modeling` only when the domain meaning changes or has conflicts.
-
-Apply `ste-writing-skill` to all text in planning artifacts generated or revised through `plan-tasks` or `staged-plan-tasks`, in files and in chat. This includes SPECs, ROADMAPs, PLANs, task briefs, handoffs, history records, and supporting planning documents. Review all new or changed artifact text with the skill before you save or present the artifact. Correct each problem found in the review.
 
 ## Plan
 
