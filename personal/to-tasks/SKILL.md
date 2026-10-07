@@ -73,7 +73,7 @@ Use file counts as estimates. Prefer XS, S, and M. Allow L when a smaller split 
 ## Updates and shared rules
 
 - Before saving, check for an existing plan. Never overwrite a plan for unrelated work. Report the conflict and use another location only after the user resolves the conflict.
-- Keep task completion status in `PLAN.md`. Mark a task done only after its acceptance criteria pass and the human explicitly accepts the implementation result.
+- Task completion status is recorded in `PLAN.md` only. Mark a task done only after its acceptance criteria pass and the human explicitly accepts the implementation result.
 - Preserve completed task records and existing filenames. Add or revise unfinished tasks when requirements change.
 - Do not repeat rules from `AGENTS.md` or other repository guidance in the plan or tasks. Include only feature-specific additions, explicit changes, or exceptions.
 
