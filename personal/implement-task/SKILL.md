@@ -13,7 +13,7 @@ Read repository guidance, the task, its plan, linked spec sections, and relevant
 
 1. Use the named task or select the first unchecked task in plan order. For task input, find the plan at `../PLAN.md` from `tasks/` and verify plan membership. State the selected task. Resume unfinished implementation or review corrections. If the result waits for human review, do not make more changes without feedback. Do not skip blocked work.
 2. Require approval of the applicable spec, plan, and task content. Require completed dependencies and passed preceding stage checkpoints. Resolve material open questions before implementation. If approval is missing, hand off to `to-spec` or `to-tasks` as applicable and stop.
-3. Implement only the selected task. Run task and repository checks. Run the stage or plan checkpoint when this task completes it. Report existing failures and require no new failures.
+3. Implement only the selected task. Match the plan and task Design sketches. Treat a needed contract change outside them as a plan or task change. Run task and repository checks. Run the stage or plan checkpoint when this task completes it. Report existing failures and require no new failures.
 4. Record changes, check results, remaining work, and review notes in the task. When acceptance criteria pass, return the result for human review. Mark the task complete and check its plan checkbox only after human acceptance. Stop after one task.
 
 ## Review feedback

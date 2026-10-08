@@ -9,7 +9,16 @@ Status: [Human approval status]
 
 ## Architecture Decisions
 
-- [Additional implementation decision and rationale.]
+- ADR1: [Key decision and rationale.]
+
+## Design
+
+[Overall structure and shared contracts. Omit when no design trigger applies.]
+
+```[language]
+// path/to/module
+export function name(input: Type): Result;
+```
 
 ## Task List
 
