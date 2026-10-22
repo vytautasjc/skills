@@ -48,6 +48,4 @@ Count invocations and references in supporting files and templates as dependenci
 
 Keep artifact definitions and lifecycle rules in the skill that owns the artifact. Keep shared rules independent of callers. Use a dependency or a plain reference file for shared rules without a return dependency.
 
-Keep the planning direction: `senior` → `staged-plan-tasks` → `plan-tasks`. `senior` can also use `plan-tasks` directly.
-
 Before you complete a skill change, examine its direct and indirect dependencies for cycles.

@@ -7,9 +7,9 @@ The planning hierarchy is `senior` → `staged-plan-tasks` → `plan-tasks`, fro
 
 ## Spec and task workflow
 
-`grilling` → `to-spec` → `to-tasks` → `implement-task`
+`grill-with-docs` → `to-spec` → `to-tasks` → `implement-task`
 
-1. Use [grilling](./third-party/grilling/SKILL.md) to clarify requirements and decisions. Confirm the shared understanding.
+1. Use [grill-with-docs](./third-party/grill-with-docs/SKILL.md) to clarify requirements and decisions. Confirm the shared understanding.
 2. Use [to-spec](./personal/to-spec/SKILL.md) to turn the agreed conversation into a spec. Review and approve the spec.
 3. Use [to-tasks](./personal/to-tasks/SKILL.md) to split the approved spec into an implementation plan and small, verifiable tasks. Tasks use vertical slices. Review and approve the plan and task files.
 4. Use [implement-task](./personal/implement-task/SKILL.md) with a task file, plan file, or plan directory. Implement one task. Review the code and validation evidence. Explicitly accept the result before the task becomes done.
@@ -21,9 +21,9 @@ The document skills permit implicit invocation. When result review requires a sp
 Approval evidence and result review notes remain in the files. Plan checkboxes record task completion. Skill dependencies remain in one direction: `implement-task` → `to-tasks` → `to-spec`. The execution skill can also use `to-spec` directly.
 
 ```text
-$implement-task docs/features/registration/tasks/01-register.md
-$implement-task docs/features/registration/PLAN.md
-$implement-task docs/features/registration/
+/implement-task docs/features/registration/tasks/01-register.md
+/implement-task docs/features/registration/PLAN.md
+/implement-task docs/features/registration/
 ```
 
 ### Installation
