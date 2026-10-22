@@ -49,7 +49,7 @@ Wait for the human to correct the assumptions or approve them.
 
 Write a spec document using [template](./templates/SPEC.md).
 
-Place it under `../../../docs/features` if no other destination is provided.
+Place it at `docs/features/<feature>/SPEC.md` from the repository root if no other destination is provided.
 
 Update an existing spec in its current location.
 

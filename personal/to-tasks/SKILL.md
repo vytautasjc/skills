@@ -7,7 +7,7 @@ description: Create or update an implementation plan and task files from a spec 
 
 Create `PLAN.md` and all task files. Never create specs or write implementation code, except `Required implementation:` blocks under the Design rules.
 
-Do not create a plan for a trivial change unless the user explicitly requests one. A trivial change is clear, has low risk, and has no material unknowns or dependent work. Invoking `$to-tasks` counts as an explicit request for a plan.
+Do not create a plan for a trivial change unless the user explicitly requests one. A trivial change is clear, has low risk, and has no material unknowns or dependent work. Invoking this skill by name counts as an explicit request for a plan.
 
 ## Workflow
 

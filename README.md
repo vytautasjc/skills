@@ -7,9 +7,9 @@ The planning hierarchy is `to-spec` → `to-tasks` → `implement-task`, from to
 
 ## Spec Driven Development skills
 
-`grill-with-docs` → `to-spec` → `to-tasks` → `implement-task`
+`grilling` → `to-spec` → `to-tasks` → `implement-task`
 
-1. Use [grill-with-docs](https://github.com/mattpocock/skills/tree/main/skills/engineering/grill-with-docs) to clarify requirements and decisions. Confirm the shared understanding.
+1. Use [grilling](https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling) to clarify requirements and decisions. Confirm the shared understanding.
 2. Use [to-spec](./personal/to-spec/SKILL.md) to turn the agreed conversation into a spec. Review and approve the spec.
 3. Use [to-tasks](./personal/to-tasks/SKILL.md) to split the approved spec into an implementation plan and small, verifiable tasks. Tasks use vertical slices. Review and approve the plan and task files.
 4. Use [implement-task](./personal/implement-task/SKILL.md) with a task file, plan file, or plan directory. Implement one task. Review the code and validation evidence. Explicitly accept the result before the task becomes done.
