@@ -1,0 +1,5 @@
+interface:
+  display_name: "write-tests"
+  short_description: "Write tests with TDD, AAA, branch coverage, and mutation testing"
+policy:
+  allow_implicit_invocation: true

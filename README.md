@@ -31,3 +31,19 @@ Approval evidence and result review notes remain in the files. Plan checkboxes r
 ```sh
 npx skills add vytautasjc/skills --skill to-spec to-tasks implement-task
 ```
+
+## Testing skills
+
+[write-tests](./personal/write-tests/SKILL.md) writes and changes tests. It uses TDD, arrange-act-assert, real collaborators, branch coverage, and mutation testing.
+
+The skill has no dependencies. Reference the skill in the `AGENTS.md` file of your project:
+
+```markdown
+Use the `write-tests` skill when you add or change tests or the behavior of production code.
+```
+
+### Installation
+
+```sh
+npx skills add vytautasjc/skills --skill write-tests
+```
